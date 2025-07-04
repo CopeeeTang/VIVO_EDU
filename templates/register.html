@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/globals.css" />
+    <link rel="stylesheet" href="../static/css/register.css" />
+    <title>注册页面</title>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="div">
+        <a href="./login">
+          <img class="image" src="../static/icon/返回.svg" alt="返回" />
+        </a>
+
+        <div class="text-wrapper-4">立即注册</div>
+        <div class="text-wrapper-5">这里是登录辅助信息示例文字内容</div>
+
+        <form id="register-form" class="view">
+          <div class="view-2">
+            <label for="register-phone" class="text-wrapper">手机号</label>
+            <div class="overlap-group">
+              <input 
+                type="tel" 
+                id="register-phone" 
+                class="text-wrapper-2" 
+                placeholder="请输入您的手机号..." 
+                autocomplete="tel"
+              />
+            </div>
+          </div>
+          
+          <div class="email">
+            <label for="register-username" class="email-2">用户名</label>
+            <div class="overlap-group">
+              <input 
+                type="text" 
+                id="register-username" 
+                class="text-wrapper-2" 
+                placeholder="请输入您的用户名..." 
+                autocomplete="username"
+              />
+            </div>
+          </div>
+          
+          <div class="view-3">
+            <label for="register-password" class="text-wrapper">密码</label>
+            <div class="overlap-group">
+              <input 
+                type="password" 
+                id="register-password" 
+                class="text-wrapper-2" 
+                placeholder="请输入您的密码..." 
+                autocomplete="new-password"
+              />
+              <img 
+                id="toggle-password" 
+                class="icon" 
+                src="../static/icon/眼睛icon.svg" 
+                alt="显示密码" 
+              />
+            </div>
+          </div>
+          
+          <button type="submit" class="button">
+            <div class="text-wrapper-3">立即注册</div>
+          </button>
+        </form>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../static/js/register.js"></script>
+  </body>
+</html>

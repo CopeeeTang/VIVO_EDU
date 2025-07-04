@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="../static/globals.css" />
+    <link rel="stylesheet" href="../static/css/history1.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../static/js/history1.js" defer></script>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="div">
+        <div class="overlap">
+          <div class="frame">
+            <div class="title">家长历史行为数据</div>
+            <img class="vector" src="../static/icon/历史横线.svg" />
+          </div>
+          <!-- 修改部分: 为返回图标添加跳转链接 -->
+          <a href="./home_page">
+            <img class="image" src="../static/icon/返回.svg" />
+          </a>
+        </div>
+        <div class="overlap-group-wrapper">
+          <div class="overlap-group">
+            <div class="view">
+              <img class="icon" src="../static/icon/历史细节历史.svg" />
+              <div class="text-wrapper">历史</div>
+            </div>
+            <div class="view-2">
+              <!-- 修改部分: 为首页按钮添加跳转链接 -->
+              <a href="./home_page">
+                <div class="text-wrapper-2">首页</div>
+                <img class="icon" src="../static/icon/历史细节主页.svg" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="frame-2">
+          <div class="title-2">分析回顾</div>
+          <div class="tab">
+            <div class="text-wrapper-3">数据统计</div>
+            <div id="parent-image-link-container">
+              <div class="text-wrapper-4" id="portrait-btn">亲子画像</div>
+            </div>
+          </div>
+          <div class="frame-3">
+            <div class="title-3">冲突次数</div>
+            <div class="data" id="conflict-count">0</div>
+            <div class="change" id="conflict-change">N/A</div>
+          </div>
+          <div class="frame-4">
+            <div class="title-3">家长行为次数</div>
+            <div class="data" id="behavior-count">0</div>
+            <div class="change" id="behavior-change">N/A</div>
+          </div>
+          <div class="frame-5">
+            <div class="view-3">
+              <div class="tabs-container">
+                <div class="tab-header">
+                  <button class="tab-button active" data-target="conflict-tab">冲突分析</button>
+                  <button class="tab-button" data-target="behavior-tab">行为分析</button>
+                </div>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="conflict-tab">
+                    <h3 class="chart-title">冲突分析图表</h3>
+                    <div class="scroll-container">
+                      <div class="image-strip" id="image-strip">
+                        <!-- 冲突分析图片通过JS动态加载 -->
+                        <div class="loading-indicator">加载中...</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="behavior-tab">
+                    <h3 class="chart-title">行为分析图表</h3>
+                    <div class="scroll-container">
+                      <div class="image-strip" id="behavior-strip">
+                        <!-- 行为分析图片通过JS动态加载 -->
+                        <div class="loading-indicator">加载中...</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-wrapper-19">特征总结：</div>
+      </div>
+    </div>
+
+    <!-- 添加全屏图片查看容器 -->
+    <div id="fullscreen-overlay">
+      <span id="close-fullscreen">&times;</span>
+      <img id="fullscreen-image" src="" alt="Fullscreen Image">
+    </div>
+    <!-- 全屏容器结束 -->
+
+    <script>
+      // 后续的可视化代码将在 history1.js 中实现
+    </script>
+  </body>
+</html>

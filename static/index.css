@@ -1,0 +1,214 @@
+.screen {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.screen .div {
+  background-color: #f7f7f7;
+  width: 390px;
+  height: 844px;
+  position: relative;
+}
+
+.screen .image {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 42px;
+  left: 9px;
+}
+
+.screen .text-wrapper {
+  position: absolute;
+  height: 32px;
+  top: 125px;
+  left: 124px;
+  font-family: "ABeeZee", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  color: #171725;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0.12px;
+  line-height: 32px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-2 {
+  top: 165px;
+  left: 92px;
+  color: #9ca4ab;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0.07px;
+  line-height: 22px;
+  position: absolute;
+  font-family: "ABeeZee", Helvetica;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.screen .view {
+  height: 220px;
+  top: 218px;
+  left: 33px;
+  position: absolute;
+  width: 327px;
+}
+
+.screen .view-2 {
+  height: 82px;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 327px;
+}
+
+.screen .text-wrapper-3 {
+  top: 0;
+  left: 0;
+  color: #78828a;
+  font-size: 14px;
+  letter-spacing: 0.07px;
+  line-height: 22px;
+  position: absolute;
+  font-family: "ABeeZee", Helvetica;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.screen .overlap-group {
+  position: absolute;
+  width: 327px;
+  height: 52px;
+  top: 30px;
+  left: 0;
+  background-color: #F1F1F5;
+  border-radius: 26px;
+}
+
+.screen .text-wrapper-4 {
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #171725;
+  font-family: "ABeeZee", Helvetica;
+  font-size: 12px;
+  letter-spacing: 0.06px;
+  line-height: 20px;
+}
+
+.screen .text-wrapper-4::placeholder {
+  color: #9ca4ab;
+}
+
+.screen .overlap-group:focus-within {
+  box-shadow: 0 0 0 2px rgba(128, 214, 118, 0.2);
+}
+
+.screen .view-3 .icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.screen .view-3 .icon:hover {
+  opacity: 1;
+}
+
+.screen .view-3 {
+  height: 82px;
+  top: 98px;
+  left: 0;
+  position: absolute;
+  width: 327px;
+}
+
+.screen .icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 14px;
+  left: 287px;
+}
+
+.screen .view-4 {
+  height: 104px;
+  top: 462px;
+  left: 33px;
+  position: absolute;
+  width: 327px;
+}
+
+.screen .button {
+  all: unset;
+  box-sizing: border-box;
+  height: 56px;
+  top: 0;
+  background-image: url(https://c.animaapp.com/5z6mHOBI/img/---3.svg);
+  background-size: 100% 100%;
+  position: absolute;
+  width: 327px;
+  left: 0;
+}
+
+.screen .text-wrapper-5 {
+  top: 16px;
+  left: 131px;
+  font-style: italic;
+  color: #fefefe;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0.08px;
+  line-height: 24px;
+  position: absolute;
+  font-family: "ABeeZee", Helvetica;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.screen .button-2 {
+  all: unset;
+  box-sizing: border-box;
+  height: 24px;
+  top: 80px;
+  overflow: hidden;
+  position: absolute;
+  width: 327px;
+  left: 0;
+}
+
+.screen .img {
+  position: absolute;
+  width: 327px;
+  height: 24px;
+  top: -640px;
+  left: 724px;
+}
+
+.screen .text-wrapper-6 {
+  top: 0;
+  left: 131px;
+  font-style: italic;
+  color: #80d676;
+  font-size: 16px;
+  letter-spacing: 0.08px;
+  line-height: 24px;
+  position: absolute;
+  font-family: "ABeeZee", Helvetica;
+  font-weight: 400;
+  white-space: nowrap;
+}

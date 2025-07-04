@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/globals.css" />
+    <link rel="stylesheet" href="../static/css/home.css" />
+    <title>主页</title>
+    <!-- PWA Manifest Link -->
+    <link rel="manifest" href="../static/manifest.json">
+    <!-- Optional: Theme color for browser UI -->
+    <meta name="theme-color" content="#000000"> <!-- 与 manifest 中的 theme_color 匹配 -->
+  </head>
+  <body>
+    <div class="screen">
+      <div class="div">
+        <div class="overlap">
+          <div class="frame" id="report-list">
+            <!-- 报告列表将通过 JavaScript 动态加载 -->
+          </div>
+          <div class="rectangle-6"></div>
+          <div class="view">
+            <img class="voice" src="https://c.animaapp.com/lzvVI57f/img/voice@2x.png" />
+            <a href="./audio">
+              <div class="text-wrapper-11">录音历史</div>
+            </a>
+          </div>
+          <div class="div-wrapper">
+            <a href="./audio">
+              <div class="overlap-8">
+                <img class="icon-4" src="https://c.animaapp.com/lzvVI57f/img/--icon-2.svg" />
+                <div class="text-wrapper-12">文件历史</div>
+              </div>
+            </a>
+          </div>
+          <div class="title">常用功能</div>
+          <div class="title-2">我的录音分析报告</div>
+        </div>
+        <div class="frame-2">
+          <div class="component">
+            <a href="./recording">
+              <div class="image">
+                <img class="image" src="https://c.animaapp.com/lzvVI57f/img/---1.svg" />
+                <img class="icon-5" src="https://c.animaapp.com/lzvVI57f/img/--icon.svg" />
+              </div>
+            </a>
+            <a href="./upload">
+              <div class="overlap-9">
+                <img class="image" src="https://c.animaapp.com/lzvVI57f/img/---1.svg" />
+                <img class="icon-6" src="https://c.animaapp.com/lzvVI57f/img/--icon-1.svg" />
+              </div>
+            </a>
+          </div>
+          <div class="div-2">
+            <div class="div-2"></div>
+            <!-- 修改部分: 为历史添加跳转链接 -->
+            <div class="view-2">
+              <img class="icon-7" src="https://c.animaapp.com/lzvVI57f/img/icon-6@2x.png" />
+              <a href="./history" >
+                <div class="text-wrapper-13">历史</div>
+              </a>
+            </div>
+            <div class="view-3">
+              <div class="text-wrapper-14">首页</div>
+              <img class="icon-7" src="https://c.animaapp.com/lzvVI57f/img/icon-7.svg" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../static/js/home.js"></script>
+    <!-- PWA Service Worker Registration Script -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/static/sw.js') // 确保路径正确
+            .then(registration => {
+              console.log('Service Worker registered: ', registration);
+            })
+            .catch(registrationError => {
+              console.log('Service Worker registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

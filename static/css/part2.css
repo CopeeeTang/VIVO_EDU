@@ -1,0 +1,721 @@
+:root {
+  --primary-bg: #f7f7f7;
+  --secondary-bg: #ffffff;
+  --primary-text: #4d4d4d;
+  --secondary-text: #66707a;
+  --accent-1: #FF9F67;
+  --accent-2: #E6F3FF;
+  --accent-3: #FFE4B5;
+  --accent-4: #ecd9ff;
+  --border-color: #f0f0f0;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --icon-color: var(--accent-1);
+  --hover-scale: 1.02;
+  --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 统一页面基础布局 */
+.screen {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+.container {
+  background-color: #f7f7f7;
+  width: 390px;
+  height: 100vh;
+  position: relative;
+  padding: 5px;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 统一顶部导航 */
+.top-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  background-color: #f7f7f7;
+  z-index: 100;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.back-icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.title-wrapper {
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 18px;
+  color: #171725;
+  margin-left: 20px;
+}
+
+/* 主标题样式 */
+.main-title h1, h2 {
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 19px;
+  letter-spacing: 1px;
+  margin: 20px 0;
+}
+
+/* 内容区域调整 */
+.frame {
+  margin-top: 48px;
+  padding: 12px 10px 100px 10px;
+  width: 98%;
+  max-width: none;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+}
+
+.screen .div {
+  background-color: #f7f7f7;
+  width: 390px;
+  height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 主要内容区域样式 */
+.behavior-analysis, 
+.emotion-analysis, 
+.reflection {
+  margin: 20px 0;
+}
+
+/* Card styles (similar to part0/part1) */
+.card {
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.card-header .icon {
+  font-size: 20px;
+  color: var(--icon-color);
+  margin-right: 12px;
+}
+
+.card-header h2 {
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--primary-text);
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.card-content {
+  padding-top: 10px;
+}
+
+.card-content p,
+.card-content li,
+.card-content td {
+  font-family: "Lato-Regular", Helvetica;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--secondary-text);
+  margin-bottom: 8px;
+}
+
+.card-content strong {
+  font-family: "Lato-Bold", Helvetica;
+  color: var(--primary-text);
+}
+
+.card-content h3 {
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 16px;
+  color: var(--primary-text);
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.card-content h4 {
+  font-family: "Lato-Bold", Helvetica;
+  font-size: 14px;
+  color: var(--primary-text);
+  margin-top: 15px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-small {
+  font-size: 14px;
+  color: var(--icon-color);
+  margin-right: 6px;
+}
+
+.icon-small-list {
+  font-size: 13px;
+  color: var(--icon-color);
+  margin-right: 8px;
+}
+
+/* 对话框样式 */
+.dialogues {
+  margin: 15px 0;
+}
+
+.dialogue-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+  gap: 8px;
+}
+
+.dialogue-item.parent {
+  padding-right: 0;
+}
+
+.dialogue-item.child {
+  flex-direction: row-reverse;
+  padding-left: 0;
+}
+
+.dialogue-item img {
+  width: 36px;
+  height: 36px;
+}
+
+.dialogue-item .div-wrapper,
+.dialogue-item .overlap-4 {
+  padding: 10px 15px;
+  border-radius: 18px;
+  max-width: 75%;
+}
+
+.dialogue-item.parent .div-wrapper {
+  background-color: #e9e9eb;
+  border-bottom-left-radius: 5px;
+}
+
+.dialogue-item.child .overlap-4 {
+  background-color: var(--accent-1);
+  color: #ffffff;
+  border-bottom-right-radius: 5px;
+}
+
+.dialogue-item .role-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #888;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.dialogue-item.child .role-label {
+  color: #fce8de;
+}
+
+.dialogue-item .text-wrapper-4,
+.dialogue-item .text-wrapper-6 {
+  font-family: "KaiTi", serif;
+  font-size: 14px;
+  color: var(--primary-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dialogue-item.child .text-wrapper-6 {
+  color: #ffffff;
+}
+
+/* 标题样式 */
+h2, .text-wrapper-10, .text-wrapper-11 {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: -0.6px;
+  line-height: 18px;
+  margin: 15px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  font-family: "Lato-Regular", Helvetica;
+  font-size: 14px;
+  color: var(--secondary-text);
+}
+
+table th {
+  background-color: #f8f9fa;
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: bold;
+  color: var(--primary-text);
+}
+
+table tr:last-child td {
+  border-bottom: none;
+}
+
+/* 文本样式 */
+p, .text-wrapper-2, .text-wrapper-8, .text-wrapper-14 {
+  font-family: "Lato-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--secondary-text);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+strong, .span, .text-wrapper-13 {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #333333;
+  font-size: 12px;
+  letter-spacing: -0.55px;
+  line-height: 18px;
+}
+
+/* 对话框基础样式补充 */
+.dialogue-section {
+  margin-top: 15px;
+  border-top: 1px dashed #eee;
+  padding-top: 15px;
+}
+
+.dialogue-content {
+  margin-top: 10px;
+}
+
+/* 头像样式 */
+.img-2,
+.image-2 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #a7e9b0, #7fd8a6);
+}
+
+/* 对话气泡样式 */
+.div-wrapper {
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.overlap-4 {
+  background-color: #FF9F67;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+/* 文本样式 */
+.role-label {
+  font-family: "Lato-Medium", Helvetica;
+  font-size: 10px;
+  color: #66707a;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.text-wrapper-4 {
+  font-family: "Lato-Medium", Helvetica;
+  font-weight: 500;
+  color: #66707a;
+  font-size: 10px;
+  letter-spacing: -0.5px;
+  line-height: 15px;
+}
+
+.text-wrapper-6 {
+  font-family: "Lato-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 10px;
+  letter-spacing: -0.5px;
+  line-height: 15px;
+}
+
+/* 分析部分样式 */
+.overlap-5 {
+  background-color: transparent;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.p, .div-3, .section, .example-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.text-wrapper-8 {
+  font-family: "Lato-Regular", Helvetica;
+  font-weight: 400;
+  color: #66707a;
+  font-size: 12px;
+  letter-spacing: -0.5px;
+  line-height: 18px;
+  display: block;
+}
+
+/* 修改心灵反思镜具体内容的样式 */
+.reflection ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.reflection ul li {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.reflection ul li .icon-small-list {
+  margin-top: 3px;
+}
+
+/* 确保反思内容与其他分析内容样式一致 */
+.reflection .text-wrapper-8 {
+  font-family: "Lato-Regular", Helvetica;
+  font-weight: 400;
+  color: #66707a;
+  font-size: 12px;
+  letter-spacing: -0.5px;
+  line-height: 18px;
+}
+
+/* 修改心灵反思镜内容样式 */
+.div-11 {
+  font-family: "Lato-Medium", Helvetica;
+  font-weight: 500;
+  color: #66707a;
+  font-size: 11px;
+  letter-spacing: -0.5px;
+  line-height: 16.5px;
+}
+
+/* 场景标题样式 */
+.scene-section h3 {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: -0.6px;
+  line-height: 18px;
+  margin: 20px 0 10px 0;
+}
+
+/* 事件标题样式 */
+.scene-section p strong {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 12px;
+  letter-spacing: -0.55px;
+}
+
+/* 修改外层滚动条样式 */
+.screen::-webkit-scrollbar {
+  width: 4px;
+}
+
+.screen::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 2px;
+}
+
+.screen::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* 统一标题样式 */
+h1, .text-wrapper-9, .main-title h1 {
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 19px;
+  letter-spacing: 1px;
+  margin: 20px 0;
+}
+
+/* 然后在各个元素中使用这些变量 */
+.p {
+  background-color: var(--secondary-bg);
+  color: var(--secondary-text);
+}
+
+/* 统一滚动条样式 */
+.frame::-webkit-scrollbar,
+.container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.frame::-webkit-scrollbar-thumb,
+.container::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 2px;
+}
+
+.frame::-webkit-scrollbar-track,
+.container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* 统一 h2 标题样式，使其与 part3 一致 */
+.behavior-analysis h2, 
+.emotion-analysis h2, 
+.reflection h2 {
+  background-color: #ecd9ff;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: "Lato-Bold", Helvetica;
+  font-size: 12px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: -0.6px;
+  line-height: 18px;
+}
+
+/* Rating styles are now handled globally in globals.css */
+
+/* Responsive Adjustments for Rating (Keep or move to globals if fully identical) */
+@media screen and (max-width: 480px) {
+  /* Specific adjustments for part2 if needed, otherwise rely on globals */
+  .rating-row {
+    /* Example: Adjust alignment specifically for part2 mobile if different */
+     /* align-items: center; */
+  }
+}
+
+.text-title {
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #4e4e4e;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+.section-content {
+  font-family: "Lato-Medium", Helvetica;
+  font-weight: 500;
+  color: #333333;
+  font-size: 14px;
+  letter-spacing: -0.06px;
+  line-height: 21px;
+  margin-bottom: 20px;
+}
+
+.subheading {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: -0.06px;
+  line-height: 22px;
+  margin: 20px 0 10px;
+}
+
+/* Collapsible Section Styles */
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin: 5px -10px 0 -10px;
+  transition: background-color 0.2s ease;
+}
+
+.collapsible-header:hover {
+  background-color: #f5f5f5;
+}
+
+.collapsible-header h3,
+.collapsible-header h4 {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.collapse-icon {
+  color: var(--secondary-text, #66707a);
+  transition: transform 0.3s ease;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.collapsible-section.expanded .collapse-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.collapsible-section.expanded .collapsible-content {
+  max-height: 1000px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Adjustments for sub-card/scene-section */
+.sub-card.collapsible-section,
+.scene-section.collapsible-section {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.sub-card.collapsible-section .collapsible-header,
+.scene-section.collapsible-section .collapsible-header {
+    padding: 10px 15px;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 0;
+    justify-content: space-between; /* Ensure icon goes to right */
+}
+
+/* Adjust header spacing and elements */
+.sub-card.collapsible-section .collapsible-header h3,
+.scene-section.collapsible-section .collapsible-header h3 {
+    margin: 0; /* Already set, but ensure */
+    font-size: 16px; /* Match original h3 size */
+}
+
+.sub-card.collapsible-section.expanded .collapsible-header,
+.scene-section.collapsible-section.expanded .collapsible-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+
+.sub-card.collapsible-section .collapsible-content,
+.scene-section.collapsible-section .collapsible-content {
+    padding: 15px;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.collapsible-content ul, .collapsible-content ol,
+.collapsible-content p, .collapsible-content table,
+.collapsible-content .dialogue-section {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Rating container adjustments */
+/* .rating-container {
+
+} */
+
+/* Media queries */
+/* @media screen and (max-width: 480px) {
+
+} */
+
+/* Adjustments for specific collapsible headers in part2 */
+.scene-section > .collapsible-header { /* Scene header */
+    padding: 10px 15px;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin: 0;
+}
+.scene-section.expanded > .collapsible-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+.scene-section > .collapsible-header:hover {
+    background-color: #f0f0f0; /* Slightly darker hover for sub-card header */
+}
+
+.dialogue-section > .collapsible-header { /* Dialogue header inside scene */
+    padding: 8px 0; /* Less padding for inner header */
+    border-bottom: 1px dashed #ddd; /* Dashed line for dialogue separator */
+    border-radius: 0;
+    margin: 10px 0 0 0;
+}
+.dialogue-section > .collapsible-header:hover {
+    background-color: transparent; /* No hover background */
+}
+
+/* Collapsible headers for emotion/reflection lists (if made collapsible) */
+.card > .collapsible-section > .collapsible-header {
+    /* Styles for top-level collapsible content within a card */
+     padding: 5px 0; 
+     border-radius: 0;
+     margin: 0;
+     border-bottom: none; /* May rely on card header border */
+}
+.card > .collapsible-section > .collapsible-header:hover {
+    background-color: #f5f5f5;
+}

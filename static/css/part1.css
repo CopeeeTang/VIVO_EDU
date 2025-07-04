@@ -1,0 +1,343 @@
+:root {
+    /* Define hover variables if not present */
+    --hover-scale: 1.02;
+    --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    /* Define other variables if needed, or rely on globals */
+    --primary-text: #333; /* Example: define if not in globals */
+    --secondary-text: #444;
+}
+
+.screen {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  overflow: hidden;
+  height: 100%;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+.container {
+  background-color: #f7f7f7;
+  width: 390px;
+  height: 100vh;
+  position: relative;
+  padding: 5px;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  background-color: #f7f7f7;
+  z-index: 100;
+}
+
+.back-icon {
+  width: 48px;
+  height: 48px;
+}
+
+.title-wrapper {
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-size: 18px;
+  color: #171725;
+  margin-left: 20px;
+}
+
+.frame {
+  margin-top: 48px;
+  padding: 0 10px 100px 10px;
+  width: 98%;
+  max-width: none;
+  height: calc(100vh - 48px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+}
+
+.main-title {
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+}
+
+.card-title {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.card-title i {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #7fd8a6;
+}
+
+.dialogue-microscope .card-title i {
+  color: #5dade2;
+}
+
+.language-palette .card-title i {
+  color: #f39c12;
+}
+
+.sub-title {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 600;
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.dialogue-section {
+  margin: 20px 0;
+}
+
+.dialogue-content {
+  margin-top: 15px;
+}
+
+.dialogue-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 12px 0;
+  gap: 8px;
+}
+
+.img-2,
+.image-2 {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #a7e9b0, #7fd8a6);
+}
+
+.dialogue-item.child .image-2 {
+  background: linear-gradient(120deg, #ffcc99, #FF9F67);
+}
+
+.div-wrapper,
+.overlap-10 {
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 10px 14px;
+  flex-grow: 1;
+}
+
+.overlap-4,
+.overlap-12 {
+  background-color: #FF9F67;
+  border-radius: 12px;
+  padding: 10px 14px;
+  flex-grow: 1;
+}
+
+.text-wrapper-4,
+.text-wrapper-12 {
+  font-family: "KaiTi", serif;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+  letter-spacing: -0.5px;
+  line-height: 1.7;
+}
+
+.text-wrapper-6 {
+  font-family: "KaiTi", serif;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: -0.5px;
+  line-height: 1.7;
+}
+
+.role-label {
+  font-family: "Lato-Medium", Helvetica;
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+
+.dialogue-item.parent {
+  padding-right: 8%;
+}
+
+.dialogue-item.child {
+  flex-direction: row-reverse;
+  padding-left: 8%;
+}
+
+.analysis-section {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.analysis-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.analysis-list li {
+  font-family: "Lato-Regular", Helvetica;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.analysis-icon {
+  margin-right: 8px;
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+.ineffective-icon {
+  color: #e74c3c;
+}
+
+.effective-icon {
+  color: #2ecc71;
+}
+
+.rectangle {
+  background-color: transparent;
+  padding: 0;
+}
+
+.frame::-webkit-scrollbar {
+  width: 4px;
+}
+
+.frame::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 2px;
+}
+
+.frame::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Rating styles are now handled globally in globals.css */
+
+/* Collapsible Section Styles */
+.collapsible-header {
+  display: flex;
+  justify-content: space-between; /* Pushes icon to the right */
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 6px;
+  margin: 5px -10px 0 -10px;
+  transition: background-color 0.2s ease;
+}
+
+.collapsible-header:hover {
+  background-color: #f5f5f5;
+}
+
+.collapsible-header h3,
+.collapsible-header h4 {
+  margin: 0; /* Remove default margins from header */
+  flex-grow: 1; /* Allow title to take space */
+}
+
+.collapse-icon {
+  color: var(--secondary-text, #66707a); /* Use CSS var with fallback */
+  transition: transform 0.3s ease;
+  font-size: 14px; /* Adjust icon size */
+  margin-left: 10px; /* Space between title and icon */
+}
+
+.collapsible-section.expanded .collapse-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.collapsible-section.expanded .collapsible-content {
+  max-height: 1000px; /* Set to a large enough value */
+  padding-top: 10px; /* Add padding back when expanded */
+  padding-bottom: 10px;
+}
+
+/* Adjustments for sub-sections/dialogue sections inside cards */
+.dialogue-section.collapsible-section,
+.analysis-section.collapsible-section {
+   border-bottom: none;
+   padding-bottom: 0;
+   margin-bottom: 10px;
+   background-color: transparent; /* Ensure no extra background */
+   padding: 0; /* Let header/content handle padding */
+}
+
+.dialogue-section.collapsible-section .collapsible-header,
+.analysis-section.collapsible-section .collapsible-header{
+    padding: 10px 0; /* Reset padding */
+    border-bottom: 1px solid #eee; /* Separator line */
+    border-radius: 0;
+    margin: 0; /* Reset margin */
+}
+
+.dialogue-section.collapsible-section .collapsible-content,
+.analysis-section.collapsible-section .collapsible-content {
+    padding-left: 15px; /* Indent content slightly */
+    padding-right: 15px;
+    border: none;
+}
+
+.dialogue-section.collapsible-section .collapsible-header:hover,
+.analysis-section.collapsible-section .collapsible-header:hover {
+    background-color: transparent; /* No hover background */
+}
+
+.collapsible-content ul, .collapsible-content ol {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

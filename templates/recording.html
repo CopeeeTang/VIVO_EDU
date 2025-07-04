@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/globals.css" />
+    <link rel="stylesheet" href="../static/css/recording.css" />
+    <style>
+      /* 确保返回按钮在小屏幕上可见 */
+      .component {
+        position: fixed; /* 或者 absolute，取决于您的布局 */
+        top: 15px;
+        left: 15px;
+        z-index: 1000; /* 确保在顶层 */
+      }
+      .component img {
+          width: 30px; /* 调整图标大小 */
+          height: 30px;
+      }
+
+      /* 调整整体容器，使其在小屏幕上表现更好 */
+      .screen {
+          max-width: 100%;
+          overflow-x: hidden; /* 防止水平滚动 */
+      }
+      .div {
+          padding-top: 60px; /* 为返回按钮留出空间 */
+          width: 100%;
+          box-sizing: border-box; /* 包含padding */
+      }
+       /* 可以在这里添加更多针对小屏幕的样式调整 */
+      @media (max-width: 600px) {
+         .view-2 img, .view-2 .overlap-group, .view-2 .image-wrapper, .view-2 .img-wrapper {
+            transform: scale(0.8); /* 适当缩小控制按钮 */
+         }
+         .view-2 {
+             margin-top: 10px; /* 调整间距 */
+         }
+         .vector {
+             width: 60%; /* 调整主图标大小 */
+             margin-top: 20px;
+         }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen">
+      <!-- 返回按钮 -->
+      <div class="component">
+        <a href="./home_page">
+          <img class="image" src="../static/icon/返回.svg" alt="返回" />
+        </a>
+      </div>
+      <div class="div">
+        <div class="primary">
+          <div class="title">上传</div>
+        </div>
+        <img class="vector" src="../static/icon/Vector_audio.svg" />
+        <div class="view">
+          <img class="image" src="../static/icon/音频1.svg" />
+          <img class="img" src="../static/icon/音频1.svg" />
+          <img class="image-2" src="../static/icon/音频1.svg" />
+          <img class="image-3" src="../static/icon/音频2.svg" />
+          <img class="image-4" src="../static/icon/音频2.svg" />
+          <img class="image-5" src="../static/icon/音频2.svg" />
+        </div>
+        <div class="view-2">
+          <img class="image-6" src="../static/icon/暂停.svg" />
+          <div class="overlap-group">
+            <div class="view-3"></div>
+            <img class="frame" src="../static/icon/recoding左.svg" />
+          </div>
+          <div class="image-wrapper"><img class="image-7" src="../static/icon/recoding右.svg" /></div>
+          <div class="img-wrapper"><img class="image-8" src="../static/icon/上一首.svg" /></div>
+          <img class="frame-2" src="../static/icon/下一首.svg" />
+        </div>
+        <div class="overlap"><img class="frame-3" src="../static/icon/Frame.svg" /></div>
+      </div>
+    </div>
+    <div class="modal fade" id="customNameModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">自定义文件名</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="custom-name-form">
+                        <div class="mb-3">
+                            <label for="child-name" class="form-label">儿童姓名</label>
+                            <input type="text" class="form-control" id="child-name" placeholder="请输入儿童姓名" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">日期</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">确定</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/recording.js"></script>
+  </body>
+</html>

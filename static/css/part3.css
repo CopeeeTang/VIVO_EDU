@@ -1,0 +1,426 @@
+:root {
+  --primary-bg: #f7f7f7;
+  --secondary-bg: #ffffff;
+  --primary-text: #4d4d4d;
+  --secondary-text: #66707a;
+  --accent-1: #FF9F67; /* Original accent, might keep for other parts */
+  --accent-blue: #4a90e2; /* Added Blue */
+  --accent-red: #e74c3c;  /* Added Red */
+  --accent-2: #E6F3FF;
+  --accent-3: #FFE4B5;
+  --accent-4: #ecd9ff;
+  --border-color: #f0f0f0;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); /* Adjusted shadow slightly */
+  --icon-color: var(--accent-blue); /* Default icon color to BLUE */
+  --accent-blue-light: #eaf3fe; /* Lighter blue for backgrounds */
+  --accent-red-light: #fdedec;  /* Lighter red for backgrounds */
+  --hover-scale: 1.02;
+  --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --rating-submit-bg: var(--accent-red); /* RED submit button */
+  --rating-submit-hover-bg: #c0392b; /* Darker red */
+  --thank-you-icon-color: var(--accent-blue); /* Blue checkmark */
+  --thank-you-bg: var(--accent-blue-light);
+  --thank-you-border: #a0d4ff;
+}
+
+/* General page structure (keep as is or ensure consistency) */
+.screen {
+    background-color: var(--primary-bg);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    touch-action: none;
+    overscroll-behavior: none;
+}
+
+.container {
+    background-color: var(--primary-bg);
+    width: 390px;
+    height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    /* padding: 5px; Consider padding in .frame instead */
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Top Nav (keep as is or ensure consistency) */
+.top-nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    padding: 10px 15px; /* Adjust padding */
+    position: sticky;
+    top: 0;
+    background-color: var(--primary-bg);
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.back-icon {
+    width: 24px; /* Adjust size if needed */
+    height: 24px;
+    cursor: pointer;
+}
+
+.title-wrapper {
+    font-family: "Inter-SemiBold", Helvetica;
+    font-size: 18px;
+    color: var(--primary-text);
+    margin-left: 15px; /* Adjust margin */
+    flex-grow: 1; /* Allow title to take space */
+    text-align: center; /* Center title */
+    margin-right: 39px; /* Balance back icon space */
+}
+
+/* Remove Main Title Style */
+/* .main-title h1 { ... } */
+
+/* Frame for content padding */
+.frame {
+    padding: 15px 10px; /* Adjust padding */
+    width: 98%; /* Changed width */
+    max-width: none; /* Removed max-width */
+    height: calc(100vh - 48px); /* Adjust based on top-nav height */
+    overflow-y: auto;
+    margin-left: auto; /* Center */
+    margin-right: auto; /* Center */
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+}
+
+/* Remove .section styles */
+/* .section { ... } */
+
+/* Remove specific h2 background styles */
+/* .emotional-yoga h2 { ... } */
+/* .tutorial-guide h2 { ... } */
+/* .parent-examples h2 { ... } */
+
+/* Card styles (Ensure these are defined, potentially in globals.css or here) */
+.card {
+  background-color: var(--secondary-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: var(--card-shadow);
+  /* border: 1px solid var(--border-color); */ /* Removed border */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add transitions */
+}
+
+.card:hover {
+  transform: scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.card-header .icon {
+  font-size: 20px;
+  color: var(--icon-color);
+  margin-right: 12px;
+  transition: color 0.3s ease; /* Add transition for potential future effects */
+}
+
+.card-header h2 {
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: var(--primary-text);
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  margin: 0;
+  line-height: 1.4; /* Ensure title doesn't wrap too tightly */
+}
+
+.card-content {
+  padding-top: 10px;
+}
+
+/* Content text styles within card */
+.card-content .content, /* Target old .content class if still used */
+.card-content p,
+.card-content li {
+    font-family: "Lato-Regular", Helvetica;
+    font-size: 14px;
+    line-height: 1.7; /* Increased line height for readability */
+    color: var(--secondary-text, #66707a);
+    letter-spacing: 0;
+    margin-bottom: 10px; /* Add spacing between paragraphs/list items */
+}
+
+.card-content h3 {
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--primary-text);
+    margin: 20px 0 12px; /* More space above h3 */
+    display: flex;
+    align-items: center;
+}
+
+.card-content h4 {
+    font-family: "Lato-Bold", Helvetica;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--primary-text);
+    margin: 15px 0 8px; /* More space above h4 */
+    display: flex;
+    align-items: center;
+}
+
+/* Icon styles */
+.icon-small {
+    font-size: 15px;
+    color: var(--icon-color); /* Blue */
+    margin-right: 8px;
+}
+
+.icon-small-list {
+    font-size: 13px;
+    color: var(--icon-color); /* Blue */
+    margin-right: 8px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.icon-tiny {
+    font-size: 12px;
+    color: #aaa; /* Keep subtle */
+    margin-right: 6px;
+}
+
+/* List styles */
+.card-content ul, .card-content ol {
+    padding-left: 5px; /* Adjust indentation */
+    margin: 10px 0 15px;
+    list-style: none; /* Remove default bullets */
+}
+
+.card-content li {
+    padding-left: 5px; /* Indent list items slightly more */
+}
+
+/* Sub-section styling within cards */
+.sub-section {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee; /* Separator */
+}
+
+.sub-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+/* Example Card styles (as sub-card) */
+.example-card.sub-card {
+    background-color: var(--accent-blue-light); /* Light blue background */
+    border: 1px solid var(--accent-blue);
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    box-shadow: none;
+}
+
+.example-card h3 .icon-small {
+    color: var(--accent-blue); /* Make bookmark icon blue */
+}
+
+/* Remove old specific parent example styles if conflicting */
+/* .parent-examples .example-card { ... } */
+/* .parent-examples .example-card h3 { ... } */
+
+/* Removed rating styles from here onwards, now handled by globals.css */
+
+/* Responsive adjustments (keep or refine) */
+@media screen and (max-width: 390px) {
+    .container {
+        width: 100%;
+        /* Padding handled by .frame now */
+    }
+    .frame {
+        padding: 10px; /* Reduce padding slightly on smaller screens */
+    }
+    .card {
+        padding: 15px;
+    }
+    .card-header h2 {
+        font-size: 16px;
+    }
+    .card-content p, .card-content li, .card-content td {
+        font-size: 13px;
+    }
+}
+
+/* Ensure rating styles are also responsive */
+@media screen and (max-width: 480px) { /* This seems from the original, keep if relevant */
+  .rating-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .rating-label {
+    margin-bottom: 8px;
+    width: 100%;
+  }
+  .rating-input-container {
+    width: 100%;
+  }
+  /* Add other responsive rating adjustments if needed */
+}
+
+/* Collapsible Section Styles */
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 10px; /* Adjust padding */
+  margin: 5px -10px 0 -10px; /* Adjust negative margin based on parent padding */
+  border-radius: 6px; /* Rounded corners for hover effect */
+  transition: background-color 0.2s ease;
+}
+
+.collapsible-header:hover {
+  background-color: #f5f5f5; /* Light grey hover */
+}
+
+.collapsible-header h3,
+.collapsible-header h4 {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.collapse-icon {
+  color: var(--secondary-text);
+  transition: transform 0.3s ease;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.collapsible-section.expanded .collapse-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  max-height: 0;
+  padding: 0 10px; /* Keep horizontal padding consistent */
+}
+
+.collapsible-section.expanded .collapsible-content {
+  max-height: 1000px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Adjustments for sub-section/example-card */
+.sub-section.collapsible-section,
+.example-card.collapsible-section {
+   border-bottom: none;
+   padding-bottom: 0;
+   margin-bottom: 10px;
+   /* If .sub-section had background/border, remove it here */
+   background-color: transparent;
+   padding: 0;
+}
+
+.sub-section.collapsible-section .collapsible-header,
+.example-card.collapsible-section .collapsible-header {
+    padding: 10px 0; /* Original padding was better here */
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    margin: 0; /* Reset negative margin */
+}
+
+.sub-section.collapsible-section .collapsible-header:hover,
+.example-card.collapsible-section .collapsible-header:hover {
+    background-color: #f9f9f9; /* Light hover for sub-headers */
+}
+
+/* Example card specific header style */
+.example-card.collapsible-section .collapsible-header {
+    padding: 10px 15px;
+    background-color: #ddefff; /* Slightly darker blue hover */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin: 0; /* Reset negative margin */
+    transition: background-color 0.2s ease;
+}
+.example-card.collapsible-section.expanded .collapsible-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+.example-card.collapsible-section .collapsible-header:hover {
+    background-color: #f5f5f5;
+}
+
+.sub-section.collapsible-section .collapsible-content,
+.example-card.collapsible-section .collapsible-content {
+    padding-left: 15px; /* Indent content slightly */
+    padding-right: 15px;
+    border: none;
+    /* Adjust styles if sub-section/example-card content needs specific bg/border */
+}
+
+/* Example card specific content style */
+.example-card.collapsible-section .collapsible-content {
+    padding: 15px;
+    background-color: #fdfdfd;
+    border: 1px solid #eee;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+.collapsible-content ul, .collapsible-content ol,
+.collapsible-content p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Rating container adjustments */
+/* Remove placeholder comment */
+/* .rating-container {
+
+} */
+
+/* Media queries */
+/* Remove placeholder comment */
+/* @media screen and (max-width: 480px) {
+
+} */
+
+/* Ensure scrollbar styling is present if needed */
+.frame::-webkit-scrollbar {
+  width: 4px;
+}
+
+.frame::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Slightly darker scrollbar */
+  border-radius: 2px;
+}
+
+.frame::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Final check for any remaining green/orange colors if they need changing */
+/* Example: Search for #7fd8a6 or #f39c12 and replace if necessary */

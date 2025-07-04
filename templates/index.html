@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/globals.css" />
+    <link rel="stylesheet" href="../static/index.css" />
+    <link rel="manifest" href="../static/manifest.json">
+    <title>登录页面</title>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="div">
+        <img class="image" src="https://c.animaapp.com/5z6mHOBI/img/--.svg" alt="Logo" />
+        <div class="text-wrapper">账号密码登录</div>
+        <div class="text-wrapper-2">这里是登录辅助信息示例文字内容</div>
+        <form id="login-form" class="view">
+          <div class="view-2">
+            <label for="login-username" class="text-wrapper-3">用户名</label>
+            <div class="overlap-group">
+              <input 
+                type="text" 
+                id="login-username" 
+                class="text-wrapper-4" 
+                placeholder="请输入您的手机号邮箱用户名..." 
+                autocomplete="username"
+              />
+            </div>
+          </div>
+          <div class="view-3">
+            <label for="login-password" class="text-wrapper-3">密码</label>
+            <div class="overlap-group">
+              <input 
+                type="password" 
+                id="login-password" 
+                class="text-wrapper-4" 
+                placeholder="请输入您的密码..." 
+                autocomplete="current-password"
+              />
+              <img 
+                id="toggle-password" 
+                class="icon" 
+                src="https://c.animaapp.com/5z6mHOBI/img/--icon@2x.png" 
+                alt="显示密码" 
+              />
+            </div>
+          </div>
+        </form>
+        <div class="view-4">
+          <button type="submit" class="button" form="login-form">
+            <div class="text-wrapper-5">立即登录</div>
+          </button>
+          <a href="./register">
+            <button type="button" class="button-2">
+              <img class="img" src="https://c.animaapp.com/5z6mHOBI/img/image.svg" alt="Register Icon" />
+              <div class="text-wrapper-6">立即注册</div>
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../static/js/login.js"></script>
+    <script>
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('../static/sw.js', { scope: '/' });
+      }
+    </script>
+  </body>
+</html>

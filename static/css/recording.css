@@ -1,0 +1,414 @@
+.screen {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.screen .div {
+  background-color: #f7f7f7;
+  width: 390px;
+  height: 844px;
+  position: relative;
+}
+
+.screen .primary {
+  display: flex;
+  flex-direction: column;
+  width: 336px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  position: absolute;
+  top: 720px;
+  left: 24px;
+  background-color: #61b15a;
+  border-radius: 8px;
+}
+
+.screen .title {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 22px;
+  white-space: nowrap;
+}
+
+.screen .vector {
+  position: absolute;
+  width: 133px;
+  height: 201px;
+  top: 198px;
+  left: 124px;
+}
+
+.screen .view {
+  position: absolute;
+  width: 310px;
+  height: 41px;
+  top: 475px;
+  left: 38px;
+}
+
+.screen .image {
+  position: absolute;
+  width: 50px;
+  height: 41px;
+  top: 0;
+  left: 0;
+}
+
+.screen .img {
+  position: absolute;
+  width: 50px;
+  height: 41px;
+  top: 0;
+  left: 52px;
+}
+
+.screen .image-2 {
+  position: absolute;
+  width: 50px;
+  height: 41px;
+  top: 0;
+  left: 104px;
+}
+
+.screen .image-3 {
+  position: absolute;
+  width: 50px;
+  height: 41px;
+  top: 0;
+  left: 156px;
+}
+
+.screen .image-4 {
+  position: absolute;
+  width: 50px;
+  height: 41px;
+  top: 0;
+  left: 208px;
+}
+
+.screen .image-5 {
+  position: absolute;
+  width: 50px;
+  height: 41px;
+  top: 0;
+  left: 260px;
+}
+
+.screen .view-2 {
+  position: absolute;
+  width: 308px;
+  height: 75px;
+  top: 564px;
+  left: 37px;
+}
+
+.screen .image-6 {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  top: 0;
+  left: 118px;
+}
+
+.screen .overlap-group {
+  width: 26px;
+  height: 25px;
+  top: 25px;
+  position: absolute;
+  left: 0;
+}
+
+.screen .view-3 {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 0;
+  left: 0;
+}
+
+.screen .frame {
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  top: 2px;
+  left: 5px;
+}
+
+.screen .image-wrapper {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 25px;
+  left: 60px;
+}
+
+.screen .image-7 {
+  position: absolute;
+  width: 16px;
+  height: 15px;
+  top: 5px;
+  left: 4px;
+}
+
+.screen .img-wrapper {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: 25px;
+  left: 226px;
+}
+
+.screen .image-8 {
+  position: absolute;
+  width: 16px;
+  height: 15px;
+  top: 5px;
+  left: 5px;
+}
+
+.screen .frame-2 {
+  position: absolute;
+  width: 17px;
+  height: 18px;
+  top: 29px;
+  left: 291px;
+}
+
+.screen .overlap {
+  width: 390px;
+  height: 53px;
+  top: 42px;
+  background-image: url(../static/icon/component-11.svg);
+  background-size: 100% 100%;
+  position: absolute;
+  left: 0;
+}
+
+.screen .frame-3 {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 23px;
+  left: 363px;
+}
+
+
+.screen .img666 {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    top: 1px;
+    left: 0;
+  }
+  
+.screen .component0 {
+  position: absolute;
+  width: 390px;
+  height: 53px;
+  top: 31px;
+  left: 0;
+}
+
+.screen .image0 {
+  position: absolute;
+  width: 40px;
+  height: 48px;
+  top: 5px;
+  left: 17px;
+}
+
+/* 模态框样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-dialog {
+  width: 90%;
+  max-width: 340px;
+  margin: 1.75rem auto;
+  position: relative;
+}
+
+.modal-content {
+  width: 100%;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+/* 调整模态框内容的样式 */
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+/* 确保模态框在其他元素之上 */
+.modal-backdrop {
+  z-index: 1040;
+}
+
+.modal {
+  z-index: 1050;
+}
+
+/* 动画效果 */
+.modal.fade .modal-dialog {
+  transform: translateY(-20px);
+  transition: transform 0.3s ease-out;
+}
+
+.modal.fade.show .modal-dialog {
+  transform: translateY(0);
+}
+
+/* 移动端适配 */
+@media (max-width: 576px) {
+  .modal-dialog {
+    margin: 1rem auto;
+    width: calc(100% - 2rem);
+  }
+}
+
+/* 表单样式 */
+.form-label {
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  color: #4d4d4d;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: "Roboto", Helvetica;
+  font-size: 14px;
+  color: #4d4d4d;
+  background-color: #ffffff;
+}
+
+.form-control:focus {
+  border-color: #61b15a;
+  box-shadow: 0 0 0 0.2rem rgba(97, 177, 90, 0.25);
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: #61b15a;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin-top: 16px;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #559f4e;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(97, 177, 90, 0.25);
+}
+
+/* 关闭按钮样式 */
+.btn-close {
+  opacity: 0.5;
+}
+
+.btn-close:hover {
+  opacity: 0.75;
+}
+
+/* 输入框组样式 */
+.mb-3 {
+  margin-bottom: 20px;
+}
+
+/* 日期选择器样式 */
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 30px;
+  background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234d4d4d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E") no-repeat right 8px center;
+}
+
+/* 录音状态提示浮窗 */
+.recording-toast {
+  position: absolute;
+  top: 450px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-family: "Roboto-Medium", Helvetica;
+  font-size: 14px;
+  display: none;
+  z-index: 1000;
+  animation: fadeInOut 0.3s ease-in-out;
+}
+
+.recording-toast.show {
+  display: block;
+}
+
+.recording-toast.start {
+  background-color: rgba(97, 177, 90, 0.9); /* 使用绿色表示开始录制 */
+}
+
+.recording-toast.stop {
+  background-color: rgba(231, 76, 60, 0.9); /* 使用红色表示停止录制 */
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

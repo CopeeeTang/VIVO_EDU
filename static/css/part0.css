@@ -1,0 +1,1044 @@
+:root {
+    /* Define hover variables if not present */
+    --hover-scale: 1.02;
+    --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --primary-bg: #f7f7f7;
+    --secondary-bg: #ffffff;
+    --primary-text: #4d4d4d;
+    --secondary-text: #66707a;
+    --accent-1: #7fd8a6; /* Greenish */
+    --accent-2: #f39c12; /* Orange/Yellow */
+    --border-color: #f0f0f0;
+    --card-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+}
+
+.screen {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen .div {
+  background-color: #f7f7f7;
+  width: 390px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+}
+
+.screen .frame {
+  position: absolute;
+  width: 98%;
+  max-width: none;
+  height: calc(100vh - 102px);
+  top: 102px;
+  left: 1%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 15px 100px 15px;
+  box-sizing: border-box;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.screen .text-wrapper {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  font-family: "Roboto-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .overlap {
+  position: relative;
+  width: 100%;
+}
+
+.screen .p {
+  padding: 0;
+  margin: 0;
+  font-family: initial;
+  font-size: initial;
+  line-height: initial;
+  color: initial;
+}
+
+.screen .span {
+  font-weight: initial;
+  letter-spacing: initial;
+  font-size: initial;
+  font-family: initial;
+}
+
+.screen .text-wrapper-2 {
+  font-family: "Lato-Medium", Helvetica;
+  font-weight: 500;
+  letter-spacing: -0.06px;
+  font-size: 14px;
+}
+
+.screen .text-wrapper-3 {
+  position: relative;
+  width: 100%;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #4e4e4e;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 22px;
+  display: none;
+}
+
+.screen .frame-2 {
+  position: absolute;
+  width: 343px;
+  height: 186px;
+  top: 72px;
+  left: 5px;
+  overflow-x: scroll;
+}
+
+.screen .image {
+  position: absolute;
+  width: 735px;
+  height: 186px;
+  top: 0;
+  left: 368px;
+  object-fit: cover;
+}
+
+.screen .view {
+  position: absolute;
+  width: 325px;
+  height: 186px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.screen .view-2 {
+  position: absolute;
+  width: 288px;
+  height: 3px;
+  top: 4px;
+  left: 38px;
+  background-color: #eeefef;
+}
+
+.screen .overlap-group {
+  position: absolute;
+  width: 288px;
+  height: 131px;
+  top: 23px;
+  left: 38px;
+}
+
+.screen .view-3 {
+  position: absolute;
+  width: 288px;
+  height: 3px;
+  top: 18px;
+  left: 0;
+  background-color: #eeefef;
+}
+
+.screen .view-4 {
+  position: absolute;
+  width: 288px;
+  height: 3px;
+  top: 56px;
+  left: 0;
+  background-color: #eeefef;
+}
+
+.screen .view-5 {
+  position: absolute;
+  width: 288px;
+  height: 3px;
+  top: 94px;
+  left: 0;
+  background-color: #eeefef;
+}
+
+.screen .img {
+  position: absolute;
+  width: 264px;
+  height: 30px;
+  top: 67px;
+  left: 13px;
+}
+
+.screen .image-2 {
+  position: absolute;
+  width: 265px;
+  height: 44px;
+  top: 42px;
+  left: 12px;
+}
+
+.screen .image-3 {
+  position: absolute;
+  width: 1px;
+  height: 61px;
+  top: 71px;
+  left: 229px;
+}
+
+.screen .selector {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 65px;
+  left: 223px;
+}
+
+.screen .overlap-group-wrapper {
+  position: absolute;
+  width: 82px;
+  height: 63px;
+  top: 0;
+  left: 189px;
+}
+
+.screen .overlap-group-2 {
+  position: relative;
+  height: 62px;
+  background-image: url(../icon/分析页气泡.svg);
+  background-size: 100% 100%;
+}
+
+.screen .text-wrapper-4 {
+  position: absolute;
+  width: 24px;
+  top: 33px;
+  left: 29px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #666666;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 13px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-5 {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #253334;
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.screen .view-6 {
+  position: absolute;
+  width: 288px;
+  height: 3px;
+  top: 155px;
+  left: 38px;
+  background-color: #eeefef;
+}
+
+.screen .x {
+  position: absolute;
+  width: 286px;
+  height: 16px;
+  top: 170px;
+  left: 39px;
+  overflow: hidden;
+}
+
+.screen .text-wrapper-6 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-7 {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-8 {
+  position: absolute;
+  top: 0;
+  left: 87px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-9 {
+  position: absolute;
+  top: 0;
+  left: 131px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-10 {
+  position: absolute;
+  top: 0;
+  left: 175px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-11 {
+  position: absolute;
+  top: 0;
+  left: 218px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-12 {
+  position: absolute;
+  top: 0;
+  left: 262px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .y {
+  position: absolute;
+  width: 26px;
+  height: 164px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.screen .text-wrapper-13 {
+  position: absolute;
+  top: 148px;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-14 {
+  position: absolute;
+  top: 111px;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-15 {
+  position: absolute;
+  top: 74px;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-16 {
+  position: absolute;
+  top: 37px;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .overlap-2 {
+  position: relative;
+  width: 343px;
+  height: 90px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  clear: both;
+}
+
+.screen .overlap-wrapper {
+  position: absolute;
+  width: 343px;
+  height: 90px;
+  top: 0;
+  left: 0;
+}
+
+.screen .overlap-3 {
+  position: relative;
+  height: 90px;
+}
+
+.screen .rectangle {
+  position: absolute;
+  width: 338px;
+  height: 90px;
+  top: 0;
+  left: 5px;
+  border-radius: 24px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgb(255, 255, 255) 100%
+  );
+}
+
+.screen .rectangle-2 {
+  position: absolute;
+  width: 68px;
+  height: 68px;
+  top: 11px;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.screen .group {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 35px;
+  left: 308px;
+  background-color: #ffffff;
+  border-radius: 12px;
+}
+
+.screen .group-2 {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 34px;
+  left: 304px;
+  background-color: #adce74;
+  border-radius: 12px;
+}
+
+.screen .vector {
+  position: absolute;
+  width: 5px;
+  height: 10px;
+  top: 40px;
+  left: 313px;
+}
+
+.screen .text-wrapper-17 {
+  position: absolute;
+  width: 223px;
+  top: 29px;
+  left: 82px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 15px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .text-wrapper-18 {
+  position: absolute;
+  width: 223px;
+  top: 26px;
+  left: 13px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 40px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-19 {
+  position: absolute;
+  width: 200px;
+  top: 56px;
+  left: 88px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 10px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .overlap-4 {
+  position: relative;
+  width: 343px;
+  height: 90px;
+  margin-bottom: 20px;
+  clear: both;
+}
+
+.screen .text-wrapper-20 {
+  position: absolute;
+  width: 207px;
+  top: 26px;
+  left: 82px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 15px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .text-wrapper-21 {
+  position: absolute;
+  width: 207px;
+  top: 22px;
+  left: 16px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 40px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-22 {
+  position: absolute;
+  width: 95px;
+  top: 41px;
+  left: 88px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 10px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .overlap-5 {
+  position: relative;
+  width: 343px;
+  height: 90px;
+  margin-bottom: 20px;
+  clear: both;
+}
+
+.screen .text-wrapper-23 {
+  position: absolute;
+  width: 314px;
+  top: 26px;
+  left: 82px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 15px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .text-wrapper-24 {
+  position: absolute;
+  width: 50px;
+  top: 26px;
+  left: 13px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 40px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.screen .div-2 {
+  position: absolute;
+  width: 107px;
+  top: 14px;
+  left: 88px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 15px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .text-wrapper-25 {
+  letter-spacing: 0.15px;
+}
+
+.screen .text-wrapper-26 {
+  font-size: 20px;
+  letter-spacing: 0.20px;
+}
+
+.screen .text-wrapper-27 {
+  font-size: 10px;
+  letter-spacing: 0.10px;
+}
+
+.screen .overlap-6 {
+  position: relative;
+  width: 343px;
+  height: 90px;
+  margin-bottom: 20px;
+  clear: both;
+}
+
+.screen .rectangle-3 {
+  position: absolute;
+  width: 338px;
+  height: 90px;
+  top: 0;
+  left: 5px;
+}
+
+.screen .text-wrapper-28 {
+  position: absolute;
+  width: 209px;
+  top: 30px;
+  left: 82px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 15px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .text-wrapper-29 {
+  position: absolute;
+  width: 53px;
+  top: 21px;
+  left: 16px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 40px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-30 {
+  position: absolute;
+  width: 209px;
+  top: 55px;
+  left: 65px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #4d4d4d;
+  font-size: 10px;
+  letter-spacing: 1.00px;
+  line-height: normal;
+}
+
+.screen .text-wrapper-31 {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 17.6px;
+  display: none;
+}
+
+.screen .component {
+  position: fixed;
+  width: 390px;
+  height: 53px;
+  top: 31px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background-color: #f7f7f7;
+}
+
+.screen .image {
+  position: absolute;
+  width: 40px;
+  height: 48px;
+  top: 5px;
+  left: 17px;
+}
+
+.screen .image-4 {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: 18px;
+  left: 13px;
+}
+
+.education-panorama {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.environment-description {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: "Lato-Regular", Helvetica;
+  font-weight: 400;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.portrait-items {
+  position: relative;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.portrait-item {
+  margin-bottom: 15px;
+}
+
+.portrait-item .aspect {
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.portrait-item .description {
+  font-family: "Lato-Regular", Helvetica;
+  font-weight: 400;
+  color: #333333;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* 响应式调整 - 在较小屏幕上垂直排列 */
+/* The @media rule below this comment was part of the rating styles but is kept for now */
+/* It might need removal later if it was solely for rating and causes issues */
+/* @media screen and (max-width: 480px) { */
+  /* Removed rating-specific rules inside media query */
+/* } */
+
+/* 统一的 Section 标题样式 */
+.section-title {
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 600;
+  color: #333;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin-bottom: 20px;
+  border-left: 4px solid #7fd8a6;
+  padding-left: 10px;
+}
+
+.sub-section-title {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #4a4a4a;
+  font-size: 16px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.sub-section-title i {
+  margin-right: 8px;
+  color: #7fd8a6;
+}
+
+.sub-section-title .fa-lightbulb {
+  color: #f39c12;
+}
+
+/* 家庭教育全景图 */
+.education-panorama {
+  position: relative;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.environment-description {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  font-family: "Lato-Regular", Helvetica;
+  font-weight: 400;
+  color: #333;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.portrait-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.portrait-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.portrait-card:hover {
+  transform: scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+}
+
+.portrait-card-title {
+  font-family: "Roboto-Bold", Helvetica;
+  font-weight: 700;
+  color: #4d4d4d;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.portrait-card-description {
+  font-family: "Lato-Regular", Helvetica;
+  font-weight: 400;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 彩虹与阴霾 */
+.rainbow-shadow-section {
+  position: relative;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.advantages-container,
+.improvements-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.advantage-card,
+.improvement-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  border-left: 4px solid;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.advantage-card {
+  border-left-color: #7fd8a6;
+}
+
+.advantage-card:hover {
+  transform: scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+}
+
+.improvement-card {
+  border-left-color: #f39c12;
+}
+
+.improvement-card:hover {
+  transform: scale(var(--hover-scale));
+  box-shadow: var(--hover-shadow);
+}
+
+.card-title {
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-family: "Lato-Regular", Helvetica;
+  font-size: 14px;
+  color: var(--secondary-text, #555);
+  line-height: 1.7;
+  margin-top: 5px;
+}
+
+/* 适应性调整，例如在中等屏幕上显示两列肖像卡片 */
+@media screen and (min-width: 600px) {
+  .portrait-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* Add hover effects to link blocks */
+.overlap-2, /* Link to Part 1 */
+.overlap-4, /* Link to Part 2 */
+.overlap-5, /* Link to Part 3 */
+.overlap-6 { /* Link to Detail 4 */
+    position: relative; /* Ensure positioning context */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    border-radius: 24px; /* Match inner rectangle */
+    overflow: hidden; /* Clip shadow if needed */
+}
+
+.overlap-2:hover,
+.overlap-4:hover,
+.overlap-5:hover,
+.overlap-6:hover {
+    transform: scale(var(--hover-scale)); 
+    box-shadow: var(--hover-shadow);
+}
+
+/* Improve Readability in cards */
+.portrait-card-description,
+.card-description { /* Used in advantage/improvement cards */
+    font-size: 14px; /* Ensure consistent size */
+    line-height: 1.7; /* Improve line spacing */
+    color: var(--secondary-text, #555);
+}
+
+.environment-description {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Add Collapsible styles (if collapsible sections are added to part0 later) */
+/* Copied from part3 for potential future use */
+.collapsible-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 10px;
+  margin: 5px -10px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.collapsible-header:hover {
+  background-color: #f5f5f5;
+}
+
+.collapsible-header h3,
+.collapsible-header h4 {
+  margin: 0;
+  flex-grow: 1;
+}
+
+.collapse-icon {
+  color: var(--secondary-text, #66707a);
+  transition: transform 0.3s ease;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.collapsible-section.expanded .collapse-icon {
+  transform: rotate(180deg);
+}
+
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.collapsible-section.expanded .collapsible-content {
+  max-height: 1000px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/globals.css" />
+    <link rel="stylesheet" href="/static/css/part3.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="/static/js/part0.js"></script>
+    <title>亲子对话策略</title>
+  </head>
+  <body>
+    <div class="screen">
+      <div class="container">
+        <!-- 顶部导航 -->
+        <div class="top-nav">
+          <a href="/static/reports/output0_{{ file_id }}.html">
+            <img class="back-icon" src="/static/icon/返回.svg" alt="返回" />
+          </a>
+          <div class="title-wrapper">亲子策略建议</div>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <div class="frame">
+          <!-- 情绪瑜伽部分 -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-spa icon"></i>
+              <h2>情绪瑜伽：让您不在孩子面前火冒三丈</h2>
+            </div>
+            <div class="card-content">
+              <div class="analysis sub-section collapsible-section expanded">
+                <div class="collapsible-header">
+                  <h3><i class="fas fa-chart-pie icon-small"></i> 情绪分析</h3>
+                  <i class="fas fa-chevron-down collapse-icon"></i>
+                </div>
+                <div class="collapsible-content">
+                  <p>{{ emotional_yoga.analysis }}</p>
+                </div>
+              </div>
+              
+              <div class="tips sub-section collapsible-section collapsed">
+                <div class="collapsible-header">
+                  <h3><i class="fas fa-hands-helping icon-small"></i> 寻求支持</h3>
+                  <i class="fas fa-chevron-down collapse-icon"></i>
+                </div>
+                <div class="collapsible-content">
+                  <ul>
+                    {% for tip in emotional_yoga.support_tips %}
+                      <li><i class="fas fa-check-circle icon-small-list"></i> {{ tip }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 解锁宝典部分 -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-book-open icon"></i>
+              <h2>解锁宝典：让您像专家一样辅导孩子</h2>
+            </div>
+            <div class="card-content">
+              <div class="problem sub-section collapsible-section expanded">
+                <div class="collapsible-header">
+                  <h3><i class="fas fa-question-circle icon-small"></i> 问题</h3>
+                  <i class="fas fa-chevron-down collapse-icon"></i>
+                </div>
+                <div class="collapsible-content">
+                  <p>{{ tutorial_guide.problem_description }}</p>
+                </div>
+              </div>
+
+              <div class="strategies sub-section collapsible-section collapsed">
+                <div class="collapsible-header">
+                  <h3><i class="fas fa-lightbulb icon-small"></i> 策略</h3>
+                  <i class="fas fa-chevron-down collapse-icon"></i>
+                </div>
+                <div class="collapsible-content">
+                  <ul>
+                    {% for strategy in tutorial_guide.strategies %}
+                      <li><i class="fas fa-arrow-right icon-small-list"></i> {{ strategy }}</li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+
+              <div class="implementation sub-section collapsible-section collapsed">
+                <div class="collapsible-header">
+                  <h3><i class="fas fa-tasks icon-small"></i> 具体实施步骤</h3>
+                  <i class="fas fa-chevron-down collapse-icon"></i>
+                </div>
+                <div class="collapsible-content">
+                  <p>{{ tutorial_guide.implementation_steps }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 案例展示部分 -->
+          <div class="card">
+            <div class="card-header">
+              <i class="fas fa-users icon"></i>
+              <h2>别人家的"家长"：看看别的家长会怎么做</h2>
+            </div>
+            <div class="card-content">
+              {% for example in parent_examples %}
+                <div class="example-card sub-card collapsible-section {{ 'expanded' if loop.first else 'collapsed' }}">
+                  <div class="collapsible-header">
+                    <h3><i class="fas fa-bookmark icon-small"></i> {{ example.title }}</h3>
+                    <i class="fas fa-chevron-down collapse-icon"></i>
+                  </div>
+                  <div class="collapsible-content">
+                    <div class="scenario">
+                      <h4><i class="fas fa-map-signs icon-tiny"></i> 场景：</h4>
+                      <p>{{ example.scenario }}</p>
+                    </div>
+                    <div class="solution">
+                      <h4><i class="fas fa-check icon-tiny"></i> 解决方案：</h4>
+                      <p>{{ example.solution }}</p>
+                    </div>
+                    <div class="outcome">
+                      <h4><i class="fas fa-trophy icon-tiny"></i> 效果：</h4>
+                      <p>{{ example.outcome }}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          
+          <!-- 评分模块 -->
+          <div class="rating-container card">
+            <div class="card-header">
+              <i class="fas fa-star icon"></i>
+              <h2 class="rating-title">您对这部分内容的评价</h2>
+            </div>
+            <div class="card-content">
+              <div class="rating-description">您的反馈将帮助我们改进内容质量</div>
+              
+              <div id="login-status-message" style="display: none; color: red; margin-bottom: 10px;">
+                您尚未登录或登录已过期，请先登录再提交评分
+              </div>
+              
+              <div class="rating-criteria">
+                <form id="rating-form-part3" method="post" action="javascript:void(0);" onsubmit="return false;">
+                  <input type="hidden" name="part" value="part3">
+                  
+                  <div class="rating-row">
+                    <div class="rating-label">内容理解性</div>
+                    <div class="rating-input-wrapper">
+                      <div class="rating-input-container">
+                        <input type="number" min="1" max="5" class="rating-input" name="comprehensibility" placeholder="1-5" required>
+                      </div>
+                      <div class="rating-scale">
+                        <span class="scale-start">不理解</span>
+                        <span class="scale-end">非常清晰</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="rating-row">
+                    <div class="rating-label">内容真实性</div>
+                    <div class="rating-input-wrapper">
+                      <div class="rating-input-container">
+                        <input type="number" min="1" max="5" class="rating-input" name="authenticity" placeholder="1-5" required>
+                      </div>
+                      <div class="rating-scale">
+                        <span class="scale-start">不真实</span>
+                        <span class="scale-end">非常真实</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="rating-row">
+                    <div class="rating-label">模块实用性</div>
+                    <div class="rating-input-wrapper">
+                      <div class="rating-input-container">
+                        <input type="number" min="1" max="5" class="rating-input" name="usefulness" placeholder="1-5" required>
+                      </div>
+                      <div class="rating-scale">
+                        <span class="scale-start">不实用</span>
+                        <span class="scale-end">非常实用</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="rating-comment">
+                    <label for="comment">您的宝贵意见：</label>
+                    <textarea id="comment" name="comment" placeholder="请分享您对这部分内容的具体建议或感受..."></textarea>
+                  </div>
+                  
+                  <button type="submit" class="rating-submit">提交评价</button>
+                </form>
+                <div class="thank-you-message">
+                  <div class="thank-you-icon">✓</div>
+                  <div class="thank-you-text">感谢您的评价！</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

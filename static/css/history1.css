@@ -1,0 +1,881 @@
+.screen {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.screen .div {
+  background-color: #f7f7f7;
+  overflow: hidden;
+  width: 390px;
+  height: 844px;
+  position: relative;
+}
+
+.screen .overlap {
+  position: absolute;
+  width: 517px;
+  height: 56px;
+  top: 42px;
+  left: -46px;
+}
+
+.screen .frame {
+  position: absolute;
+  width: 517px;
+  height: 50px;
+  top: 6px;
+  left: 0;
+  background-color: #f7f7f7;
+}
+
+.screen .title {
+  width: 336px;
+  top: 6px;
+  left: 72px;
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 18px;
+  text-align: center;
+  line-height: 24px;
+  position: absolute;
+  letter-spacing: 0;
+}
+
+.screen .vector {
+  position: absolute;
+  width: 386px;
+  height: 1px;
+  top: 42px;
+  left: 46px;
+  object-fit: cover;
+}
+
+.screen .image {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 55px;
+}
+
+.screen .overlap-group-wrapper {
+  position: absolute;
+  width: 463px;
+  height: 90px;
+  top: 754px;
+  left: -36px;
+  background-color: #f7f7f7;
+}
+
+.screen .overlap-group {
+  position: relative;
+  height: 90px;
+  background-color: #f7f7f7;
+}
+
+.screen .view {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 13px;
+  left: 304px;
+  background-image: url(./img/image-2.svg);
+  background-size: 100% 100%;
+}
+
+.screen .icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 6px;
+  left: 12px;
+}
+
+.screen .text-wrapper {
+  top: 30px;
+  left: 12px;
+  font-family: "ABeeZee-Italic", Helvetica;
+  font-style: italic;
+  color: #61b15a;
+  font-size: 11px;
+  letter-spacing: 0.05px;
+  line-height: 18px;
+  position: absolute;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.screen .view-2 {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: 13px;
+  left: 108px;
+  background-image: url(./img/image-5.svg);
+  background-size: 100% 100%;
+}
+
+.screen .text-wrapper-2 {
+  position: absolute;
+  top: 30px;
+  left: 12px;
+  font-family: "ABeeZee-Italic", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  color: #9ca4ab;
+  font-size: 11px;
+  text-align: center;
+  letter-spacing: 0.05px;
+  line-height: 18px;
+  white-space: nowrap;
+}
+
+.screen .frame-2 {
+  position: absolute;
+  width: 375px;
+  height: 391px;
+  top: 98px;
+  left: 8px;
+}
+
+.screen .title-2 {
+  width: 336px;
+  top: -1px;
+  left: 7px;
+  font-family: "Roboto-ExtraBold", Helvetica;
+  font-weight: 800;
+  color: #000000;
+  font-size: 16px;
+  line-height: 24px;
+  position: absolute;
+  letter-spacing: 0;
+}
+
+.screen .tab {
+  position: absolute;
+  width: 375px;
+  height: 32px;
+  top: 41px;
+  left: 0;
+}
+
+.screen .text-wrapper-3 {
+  position: absolute;
+  top: 0;
+  left: 65px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #61b15a;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 17.6px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-4 {
+  top: 0;
+  left: 258px;
+  opacity: 0.7;
+  font-family: "ABeeZee-Regular", Helvetica;
+  color: #818586;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 17.6px;
+  position: absolute;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.screen .line {
+  position: absolute;
+  width: 187px;
+  height: 2px;
+  top: 30px;
+  left: 188px;
+}
+
+.screen .img {
+  position: absolute;
+  width: 188px;
+  height: 2px;
+  top: 30px;
+  left: 0;
+}
+
+.screen .frame-3 {
+  position: absolute;
+  width: 142px;
+  height: 104px;
+  top: 540px;
+  left: 32px;
+  background-image: url(../icon/历史方块左.svg);
+  background-size: 100% 100%;
+}
+
+.screen .title-3 {
+  width: 140px;
+  top: 13px;
+  left: 24px;
+  font-family: "Roboto-Regular", Helvetica;
+  font-weight: 400;
+  color: #00000080;
+  font-size: 14px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  position: absolute;
+  letter-spacing: 0;
+}
+
+.screen .data {
+  position: absolute;
+  top: 37px;
+  left: 24px;
+  font-family: "Roboto-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.screen .change {
+  position: absolute;
+  top: 69px;
+  left: 24px;
+  font-family: "Roboto-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.screen .frame-4 {
+  position: absolute;
+  width: 142px;
+  height: 104px;
+  top: 540px;
+  left: 203px;
+  background-image: url(../icon/历史方块右.svg);
+  background-size: 100% 100%;
+}
+
+.screen .frame-5 {
+  position: absolute;
+  width: 338px;
+  height: 420px;
+  top: 96px;
+  left: 21px;
+  overflow: hidden;
+}
+
+.screen .image-2 {
+  position: absolute;
+  width: 362px;
+  height: 222px;
+  top: 20px;
+  left: 388px;
+  object-fit: cover;
+}
+
+.screen .view-3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.screen .overlap-2 {
+  position: absolute;
+  width: 315px;
+  height: 186px;
+  top: 36px;
+  left: 0;
+}
+
+.screen .y {
+  position: absolute;
+  width: 32px;
+  height: 186px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.screen .text-wrapper-5 {
+  top: 0;
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-6 {
+  top: 170px;
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-7 {
+  top: 136px;
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-8 {
+  top: 102px;
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-9 {
+  top: 68px;
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-10 {
+  top: 34px;
+  position: absolute;
+  left: 0;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .line-2 {
+  position: absolute;
+  width: 284px;
+  height: 172px;
+  top: 8px;
+  left: 31px;
+}
+
+.screen .image-3 {
+  position: absolute;
+  width: 263px;
+  height: 83px;
+  top: 96px;
+  left: 49px;
+}
+
+.screen .image-4 {
+  position: absolute;
+  width: 263px;
+  height: 146px;
+  top: 33px;
+  left: 32px;
+}
+
+.screen .x {
+  position: absolute;
+  width: 275px;
+  height: 16px;
+  top: 226px;
+  left: 36px;
+  overflow: hidden;
+}
+
+.screen .text-wrapper-11 {
+  position: absolute;
+  top: 0;
+  left: 43px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-12 {
+  position: absolute;
+  top: 0;
+  left: 84px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-13 {
+  position: absolute;
+  top: 0;
+  left: 125px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-14 {
+  position: absolute;
+  top: 0;
+  left: 168px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-15 {
+  position: absolute;
+  top: 0;
+  left: 207px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .text-wrapper-16 {
+  position: absolute;
+  top: 0;
+  left: 251px;
+  opacity: 0.5;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #818586;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .overlap-group-2 {
+  position: absolute;
+  width: 331px;
+  height: 25px;
+  top: -2px;
+  left: 3px;
+}
+
+.screen .element {
+  position: absolute;
+  top: 7px;
+  left: 170px;
+  font-family: "ABeeZee-Regular", Helvetica;
+  font-weight: 400;
+  color: #61b15a;
+  font-size: 14px;
+  text-align: right;
+  letter-spacing: 0;
+  line-height: 16px;
+  white-space: nowrap;
+}
+
+.screen .image-wrapper {
+  position: absolute;
+  width: 21px;
+  height: 20px;
+  top: 5px;
+  left: 310px;
+}
+
+.screen .image-5 {
+  position: absolute;
+  width: 8px;
+  height: 5px;
+  top: 8px;
+  left: 7px;
+}
+
+.screen .text-wrapper-17 {
+  position: absolute;
+  width: 321px;
+  top: 0;
+  left: 0;
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: -0.80px;
+  line-height: 24px;
+}
+
+.screen .image-6 {
+  position: absolute;
+  width: 675px;
+  height: 222px;
+  top: 20px;
+  left: 776px;
+  object-fit: cover;
+}
+
+.screen .p {
+  position: absolute;
+  width: 321px;
+  top: 502px;
+  left: 29px;
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: -0.80px;
+  line-height: 24px;
+}
+
+.screen .span {
+  font-weight: 700;
+  letter-spacing: -0.13px;
+}
+
+.screen .text-wrapper-18 {
+  font-family: "Lato-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.10px;
+  line-height: 21px;
+}
+
+.screen .text-wrapper-19 {
+  position: absolute;
+  width: 321px;
+  top: 600px;
+  left: 25px;
+  font-family: "Lato-Bold", Helvetica;
+  font-weight: 700;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: -0.80px;
+  line-height: 24px;
+}
+
+.screen .component {
+  position: absolute;
+  width: 141px;
+  height: 60px;
+  top: 664px;
+  left: 236px;
+}
+
+/* 保持现有样式不变，并确保 .image-item 和 .analysis-image 的样式适应多个图片 */
+
+.scroll-container {
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.image-strip {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  padding: 0 15px;
+  min-width: max-content;
+  padding-bottom: 15px;
+}
+
+.image-item {
+  flex: 0 0 auto;
+  width: 324px;
+  height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background-color: #ffffff;
+  margin-right: 10px;
+  transition: transform 0.2s ease;
+}
+
+.image-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.analysis-image {
+  width: 100%;
+  height: 85%;
+  object-fit: contain;
+  display: block;
+  padding: 8px;
+  background-color: #f9f9f9;
+}
+
+.image-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.report-buttons-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.report-btn {
+  padding: 10px 20px;
+  background: #61b15a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.report-btn:hover {
+  background: #4a8c48;
+}
+
+.tabs-container {
+  width: 100%;
+}
+
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #555;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.tab-button.active {
+  color: #3e6cb0;
+  border-bottom: 3px solid #3e6cb0;
+  font-weight: bold;
+}
+
+.tab-button:hover {
+  background-color: #f5f5f5;
+}
+
+.tab-content {
+  padding: 10px 0 25px 0;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.chart-title {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin: 15px 0 10px 15px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* 为小屏幕设备设置响应式样式 */
+@media screen and (max-width: 390px) {
+  .image-item {
+    width: 288px;
+    height: 216px;
+  }
+  
+  .frame-5 {
+    height: 400px;
+  }
+  
+  .text-wrapper-19 {
+    top: 600px;
+  }
+  
+  .frame-3, .frame-4 {
+    top: 630px;
+  }
+}
+
+.no-data-message {
+  text-align: center;
+  padding: 30px 15px;
+  color: #888;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 20px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.loading-indicator {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  margin: 10px auto;
+  width: 200px;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* 全屏图片查看样式 */
+#fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* 半透明黑色背景 */
+  display: none; /* 默认隐藏 */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 确保在最上层 */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#fullscreen-image {
+  max-width: 95%;
+  max-height: 90%;
+  object-fit: contain; /* 保持图片比例 */
+  display: block;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+#close-fullscreen {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+#close-fullscreen:hover {
+  color: #ccc;
+}
+
+/* 响应式调整关闭按钮位置 */
+@media screen and (max-width: 600px) {
+  #close-fullscreen {
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,177 @@
+.screen {
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .screen .div {
+    background-color: #f7f7f7;
+    width: 390px;
+    height: 844px;
+    position: relative;
+  }
+  
+  .screen .button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0px 12px;
+    position: absolute;
+    top: 720px;
+    left: 18px;
+  }
+  
+  .screen .primary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 12px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    background-color: #61b15a;
+    border-radius: 8px;
+  }
+  
+  .screen .title {
+    position: relative;
+    width: fit-content;
+    margin-top: -1.00px;
+    font-family: "Roboto-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 22px;
+    white-space: nowrap;
+  }
+  
+  .screen .vector {
+    position: absolute;
+    width: 133px;
+    height: 133px;
+    top: 252px;
+    left: 129px;
+  }
+  
+  .screen .overlap-group {
+    position: absolute;
+    width: 390px;
+    height: 53px;
+    top: 47px;
+    left: 0;
+    background-image: url(./img/component-12.svg);
+    background-size: 100% 100%;
+  }
+  
+  .screen .frame {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 23px;
+    left: 358px;
+  }
+  
+  /* 模态框样式 */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+  }
+  
+  .modal.show {
+    display: flex;
+  }
+  
+  .modal-dialog {
+    width: 90%;
+    max-width: 340px;
+    margin: 1.75rem auto;
+  }
+  
+  .modal-content {
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  
+  .modal-title {
+    font-family: "Roboto-Medium", Helvetica;
+    font-weight: 500;
+    color: #4d4d4d;
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  /* 表单样式 */
+  .form-label {
+    font-family: "Roboto-Medium", Helvetica;
+    font-weight: 500;
+    color: #4d4d4d;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  
+  .form-control {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-family: "Roboto", Helvetica;
+    font-size: 14px;
+    color: #4d4d4d;
+    background-color: #ffffff;
+  }
+  
+  .form-control:focus {
+    border-color: #61b15a;
+    box-shadow: 0 0 0 0.2rem rgba(97, 177, 90, 0.25);
+  }
+  
+  /* 按钮样式 */
+  .modal .btn-primary {
+    background-color: #61b15a;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-family: "Roboto-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 22px;
+    width: 100%;
+    margin-top: 16px;
+  }
+  
+  .modal .btn-primary:hover {
+    background-color: #559f4e;
+  }
+  
+  
