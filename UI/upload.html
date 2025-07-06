@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上传文件 - 家庭教育助手</title>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/upload.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="time">9:41</span>
+        </div>
+        <div class="status-right">
+            <div class="signal-icons">
+                <svg class="cellular" viewBox="0 0 20 12">
+                    <path d="M2 10h2v2H2v-2zm4-2h2v4H6V8zm4-2h2v6h-2V6zm4-2h2v8h-2V4z" fill="currentColor"/>
+                </svg>
+                <svg class="wifi" viewBox="0 0 18 12">
+                    <path d="M9 2C4.5 2 0.9 4.6 0 6.5l1.4 1.4C2.7 6.6 5.6 4.5 9 4.5s6.3 2.1 7.6 3.4L18 6.5C17.1 4.6 13.5 2 9 2zM9 6.5c-1.8 0-3.4 0.7-4.6 1.9L6 10c0.8-0.8 1.9-1.2 3-1.2s2.2 0.4 3 1.2l1.6-1.6C12.4 7.2 10.8 6.5 9 6.5z" fill="currentColor"/>
+                </svg>
+                <div class="battery">
+                    <div class="battery-body"></div>
+                    <div class="battery-tip"></div>
+                    <div class="battery-level"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面头部 -->
+    <div class="header">
+        <button class="back-button" onclick="App.goBack()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="page-title">上传文件</h1>
+    </div>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 上传说明 -->
+        <div class="upload-intro">
+            <div class="upload-icon">
+                <svg viewBox="0 0 96 96" fill="none">
+                    <path d="M48 8L48 56M48 8L32 24M48 8L64 24M16 72L80 72M16 72C8 72 8 64 8 64L8 32C8 24 16 24 16 24L24 24M80 72C88 72 88 64 88 64L88 32C88 24 80 24 80 24L72 24" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2 class="upload-title">上传音频文件</h2>
+            <p class="upload-description">支持 MP3、WAV、M4A 格式的音频文件<br/>文件大小不超过 100MB</p>
+        </div>
+
+        <!-- 文件上传区域 -->
+        <div class="upload-zone" id="uploadZone">
+            <div class="upload-content">
+                <div class="upload-placeholder">
+                    <svg class="upload-svg" viewBox="0 0 96 96" fill="none">
+                        <path d="M48 24V72M48 24L32 40M48 24L64 40" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M24 64L24 80C24 84 28 88 32 88L64 88C68 88 72 84 72 80L72 64" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p class="upload-text">拖拽文件到此处或点击选择文件</p>
+                </div>
+                <input type="file" id="fileInput" accept=".mp3,.wav,.m4a,audio/*" multiple hidden>
+            </div>
+        </div>
+
+        <!-- 文件列表 -->
+        <div class="file-list" id="fileList" style="display: none;">
+            <h3 class="list-title">已选择的文件</h3>
+            <div class="file-items" id="fileItems">
+                <!-- 文件项将通过JavaScript动态添加 -->
+            </div>
+        </div>
+
+        <!-- 上传设置 -->
+        <div class="upload-settings">
+            <h3 class="settings-title">上传设置</h3>
+            
+            <div class="setting-item">
+                <label class="setting-label">
+                    <input type="checkbox" id="autoAnalysis" checked>
+                    <span class="checkmark"></span>
+                    自动开始分析
+                </label>
+                <p class="setting-description">上传完成后立即开始AI分析处理</p>
+            </div>
+            
+            <div class="setting-item">
+                <label class="setting-label">
+                    <input type="checkbox" id="saveOriginal" checked>
+                    <span class="checkmark"></span>
+                    保留原始文件
+                </label>
+                <p class="setting-description">在云端保留原始音频文件备份</p>
+            </div>
+            
+            <div class="setting-item">
+                <label class="setting-label">
+                    <input type="checkbox" id="notifyComplete">
+                    <span class="checkmark"></span>
+                    完成通知
+                </label>
+                <p class="setting-description">分析完成后发送消息通知</p>
+            </div>
+        </div>
+
+        <!-- 上传进度 -->
+        <div class="upload-progress" id="uploadProgress" style="display: none;">
+            <div class="progress-header">
+                <h3 class="progress-title">正在上传</h3>
+                <span class="progress-percentage" id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-info">
+                <span class="upload-speed" id="uploadSpeed">0 KB/s</span>
+                <span class="remaining-time" id="remainingTime">计算中...</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部操作按钮 -->
+    <div class="bottom-actions">
+        <button class="action-button secondary" onclick="UploadPage.clearFiles()" id="clearButton" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+            清空
+        </button>
+        <button class="action-button primary" onclick="UploadPage.startUpload()" id="uploadButton" disabled>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3-3m0 0l3 3m-3-3v12"/>
+            </svg>
+            开始上传
+        </button>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/upload.js"></script>
+</body>
+</html> 

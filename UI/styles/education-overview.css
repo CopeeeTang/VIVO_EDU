@@ -1,0 +1,727 @@
+/* 家庭教育全景页面样式 */
+
+/* 页面基础样式 */
+body {
+    background-color: #F6F6F6;
+    min-height: 100vh;
+    font-family: 'PingFang SC', 'Alibaba PuHuiTi 2.0', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* 状态栏样式 */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    font-size: 17px;
+    font-weight: 590;
+    color: var(--primary-color);
+    background: transparent;
+    z-index: 10;
+}
+
+.status-left .time {
+    color: var(--primary-color);
+    font-family: 'SF Pro', sans-serif;
+    font-weight: 590;
+    font-size: 17px;
+    line-height: 1.29;
+    text-align: center;
+}
+
+.status-right .signal-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-right .cellular,
+.status-right .wifi {
+    width: 20px;
+    height: 12px;
+    color: var(--primary-color);
+}
+
+.status-right .battery {
+    position: relative;
+    width: 27px;
+    height: 13px;
+}
+
+.battery-body {
+    width: 25px;
+    height: 13px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    opacity: 0.35;
+}
+
+.battery-tip {
+    position: absolute;
+    right: -2px;
+    top: 4px;
+    width: 1.33px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 0 1px 1px 0;
+    opacity: 0.4;
+}
+
+.battery-level {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 21px;
+    height: 9px;
+    background: var(--primary-color);
+    border-radius: 2.5px;
+}
+
+/* 页面头部 */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 12px 38px;
+    gap: 85px;
+    background: transparent;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.back-button:hover {
+    opacity: 0.7;
+}
+
+.back-button svg {
+    width: 10px;
+    height: 20px;
+    stroke-width: 4;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    text-align: left;
+    line-height: 1.05;
+    flex: 1;
+}
+
+/* 主内容区域 */
+.main-content {
+    padding: 0 29px 300px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 教育卡片样式 */
+.education-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 13px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 157px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    font-family: 'PingFang SC', sans-serif;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-description {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.4;
+    text-align: justify;
+    margin: 0;
+    font-family: 'Alibaba PuHuiTi 2.0', sans-serif;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.detail-item {
+    padding: 12px;
+    background: rgba(55, 76, 60, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.detail-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.detail-text {
+    font-size: 13px;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 总结区域 */
+.summary-section {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.summary-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 20px 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.summary-text {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.4;
+    text-align: justify;
+    margin: 0;
+    padding: 15px;
+    background: rgba(55, 76, 60, 0.05);
+    border-radius: 10px;
+}
+
+.summary-insights {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.insight-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, rgba(157, 188, 152, 0.1), rgba(157, 188, 152, 0.05));
+    border-radius: 12px;
+    border: 1px solid rgba(157, 188, 152, 0.2);
+}
+
+.insight-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.insight-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--white);
+    stroke-width: 2;
+}
+
+.insight-content {
+    flex: 1;
+}
+
+.insight-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.insight-text {
+    font-size: 13px;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 底部操作按钮 */
+.bottom-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 20px;
+    border-top: 1px solid #E5E5E5;
+    display: flex;
+    gap: 15px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.action-button {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    outline: none;
+}
+
+.action-button svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+.action-button.primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.action-button.primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(55, 76, 60, 0.3);
+}
+
+.action-button.secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.action-button.secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(55, 76, 60, 0.2);
+}
+
+/* 加载动画 */
+.card-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* 展开/收起动画 */
+.card-details {
+    opacity: 1;
+    max-height: 1000px;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.card-details.collapsed {
+    opacity: 0;
+    max-height: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 20px;
+        gap: 60px;
+    }
+    
+    .main-content {
+        padding: 0 24px 320px;
+    }
+    
+    .education-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .summary-section {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .bottom-actions {
+        padding: 15px;
+    }
+    
+    .action-button {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .audio-player-container {
+        bottom: 80px;
+        padding: 15px;
+    }
+    
+    .audio-controls {
+        gap: 12px;
+    }
+    
+    .play-button {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .audio-actions {
+        gap: 12px;
+    }
+    
+    .speed-button,
+    .volume-button {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        gap: 40px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+    }
+    
+    .main-content {
+        padding: 0 20px 330px;
+    }
+    
+    .education-card {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .card-title {
+        font-size: 14px;
+    }
+    
+    .card-description {
+        font-size: 14px;
+    }
+    
+    .summary-section {
+        padding: 12px;
+    }
+    
+    .summary-title {
+        font-size: 16px;
+    }
+    
+    .insight-item {
+        padding: 12px;
+    }
+    
+    .insight-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .insight-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .bottom-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .action-button {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .audio-player-container {
+        bottom: 120px;
+        padding: 12px;
+    }
+    
+    .audio-player {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .audio-title {
+        font-size: 14px;
+    }
+    
+    .audio-duration {
+        font-size: 12px;
+    }
+}
+
+/* 无障碍支持 */
+.education-card:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.action-button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 打印样式 */
+@media print {
+    .status-bar,
+    .header,
+    .bottom-actions {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 0;
+    }
+    
+    .education-card {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .summary-section {
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+}
+
+/* 音频播放器样式 */
+.audio-player-container {
+    position: fixed;
+    bottom: 90px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 1);
+    border-top: 2px solid #E5E5E5;
+    padding: 20px;
+    margin: 0;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    opacity: 1;
+    backdrop-filter: blur(10px);
+}
+
+.audio-player {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.play-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(55, 76, 60, 0.3);
+}
+
+.play-button:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+.play-button svg {
+    width: 20px;
+    height: 20px;
+    color: var(--white);
+}
+
+.audio-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.audio-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+}
+
+.audio-duration {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.audio-progress {
+    width: 100%;
+    height: 4px;
+    background: #E5E5E5;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+.progress-handle {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.audio-progress:hover .progress-handle {
+    opacity: 1;
+}
+
+.audio-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.speed-button,
+.volume-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.speed-button:hover,
+.volume-button:hover {
+    background: var(--light-background);
+    border-color: var(--primary-color);
+}
+
+.speed-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.volume-button svg {
+    width: 18px;
+    height: 18px;
+    color: var(--black);
+}
+
+ 

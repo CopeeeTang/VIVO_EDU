@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>录音 - 家庭教育助手</title>
+    <link rel="stylesheet" href="styles/recording.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time-container">
+            <span class="time">9:41</span>
+        </div>
+        <div class="levels">
+            <div class="cellular-connection"></div>
+            <div class="wifi"></div>
+            <div class="battery">
+                <div class="battery-border"></div>
+                <div class="battery-capacity"></div>
+                <div class="battery-cap"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="main-content">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <button class="back-btn" id="backBtn">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M17.5 21L10.5 14L17.5 7" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <h1 class="page-title">录音</h1>
+        </div>
+
+        <!-- 录音状态展示区 -->
+        <div class="recording-display">
+            <!-- 麦克风图标 -->
+            <div class="microphone-container" id="microphoneContainer">
+                <div class="microphone-icon" id="microphoneIcon">
+                    <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
+                        <!-- 麦克风主体 -->
+                        <path d="M60 20C52.268 20 46 26.268 46 34V54C46 61.732 52.268 68 60 68C67.732 68 74 61.732 74 54V34C74 26.268 67.732 20 60 20Z" fill="#374C3C"/>
+                        <!-- 麦克风支架 -->
+                        <path d="M38 50V54C38 70.016 51.984 84 68 84H52C52 89.523 56.477 94 62 94H58C58 96.21 59.79 98 62 98H58C58 100.21 59.79 102 62 102H58V106H62V102H58C58 100.21 59.79 98 62 98H58C58 96.21 59.79 94 62 94H58C56.477 94 52 89.523 52 84H68C84.016 84 98 70.016 98 54V50" stroke="#374C3C" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M60 84V102" stroke="#374C3C" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M50 102H70" stroke="#374C3C" stroke-width="3" stroke-linecap="round"/>
+                        <!-- 音波效果（录音时显示） -->
+                        <g class="sound-waves" opacity="0">
+                            <circle cx="60" cy="60" r="25" stroke="#9DBC98" stroke-width="2" fill="none" opacity="0.6"/>
+                            <circle cx="60" cy="60" r="35" stroke="#9DBC98" stroke-width="2" fill="none" opacity="0.4"/>
+                            <circle cx="60" cy="60" r="45" stroke="#9DBC98" stroke-width="2" fill="none" opacity="0.2"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <!-- 录音状态指示器 -->
+                <div class="recording-indicator" id="recordingIndicator">
+                    <div class="recording-dot"></div>
+                    <span class="recording-text">点击开始录音</span>
+                </div>
+            </div>
+
+            <!-- 录音时间显示 -->
+            <div class="recording-time" id="recordingTime">
+                <span class="time-display">00:00</span>
+            </div>
+
+            <!-- 音频波形可视化 -->
+            <div class="audio-visualizer" id="audioVisualizer" style="display: none;">
+                <div class="wave-bar" style="height: 20%"></div>
+                <div class="wave-bar" style="height: 40%"></div>
+                <div class="wave-bar" style="height: 80%"></div>
+                <div class="wave-bar" style="height: 30%"></div>
+                <div class="wave-bar" style="height: 90%"></div>
+                <div class="wave-bar" style="height: 50%"></div>
+                <div class="wave-bar" style="height: 70%"></div>
+                <div class="wave-bar" style="height: 35%"></div>
+                <div class="wave-bar" style="height: 85%"></div>
+                <div class="wave-bar" style="height: 45%"></div>
+                <div class="wave-bar" style="height: 60%"></div>
+                <div class="wave-bar" style="height: 25%"></div>
+                <div class="wave-bar" style="height: 75%"></div>
+                <div class="wave-bar" style="height: 55%"></div>
+                <div class="wave-bar" style="height: 95%"></div>
+                <div class="wave-bar" style="height: 15%"></div>
+                <div class="wave-bar" style="height: 65%"></div>
+                <div class="wave-bar" style="height: 40%"></div>
+                <div class="wave-bar" style="height: 80%"></div>
+                <div class="wave-bar" style="height: 30%"></div>
+            </div>
+        </div>
+
+        <!-- 录音控制按钮 -->
+        <div class="recording-controls">
+            <!-- 主录音按钮 -->
+            <div class="main-control">
+                <button class="record-button" id="recordButton" data-state="idle">
+                    <div class="button-bg"></div>
+                    <div class="button-content">
+                        <!-- 开始录音状态 -->
+                        <div class="button-state start-state active">
+                            <div class="record-dot"></div>
+                        </div>
+                        
+                        <!-- 录音中状态 -->
+                        <div class="button-state recording-state">
+                            <div class="stop-square"></div>
+                        </div>
+                        
+                        <!-- 暂停状态 -->
+                        <div class="button-state pause-state">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M8 5V19M16 5V19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+                
+                <!-- 录音状态文本 -->
+                <div class="control-text">
+                    <span class="control-label" id="controlLabel">点击开始录音</span>
+                </div>
+            </div>
+
+            <!-- 次要控制按钮（录音完成后显示） -->
+            <div class="secondary-controls" id="secondaryControls" style="display: none;">
+                <button class="action-btn cancel-btn" id="cancelBtn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>重录</span>
+                </button>
+                
+                <button class="action-btn upload-btn" id="uploadBtn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M17.5 12.5V15.833C17.5 16.274 17.325 16.698 17.012 17.012C16.698 17.325 16.274 17.5 15.833 17.5H4.167C3.726 17.5 3.302 17.325 2.988 17.012C2.675 16.698 2.5 16.274 2.5 15.833V12.5M14.167 8.333L10 4.167M10 4.167L5.833 8.333M10 4.167V12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>上传</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 录音提示信息 -->
+        <div class="recording-tips" id="recordingTips">
+            <div class="tips-container">
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M18.333 10C18.333 14.602 14.602 18.333 10 18.333C5.398 18.333 1.667 14.602 1.667 10C1.667 5.398 5.398 1.667 10 1.667C14.602 1.667 18.333 5.398 18.333 10Z" stroke="#9DBC98" stroke-width="1.5"/>
+                            <path d="M7.5 7.5C7.5 7.5 8.333 6.667 10 6.667C11.667 6.667 12.5 7.5 12.5 8.333C12.5 9.167 10 10 10 10M10 13.333H10.008" stroke="#9DBC98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-title">录音环境</div>
+                        <div class="tip-text">请保持安静的环境，确保录音质量</div>
+                    </div>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 3.333V10M10 10L15 5M10 10L5 5" stroke="#9DBC98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3.333 13.333V15C3.333 15.442 3.509 15.866 3.821 16.179C4.134 16.491 4.558 16.667 5 16.667H15C15.442 16.667 15.866 16.491 16.179 16.179C16.491 15.866 16.667 15.442 16.667 15V13.333" stroke="#9DBC98" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-title">录音距离</div>
+                        <div class="tip-text">建议距离设备15-30厘米进行录音</div>
+                    </div>
+                </div>
+                
+                <div class="tip-item">
+                    <div class="tip-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="8.333" stroke="#9DBC98" stroke-width="1.5"/>
+                            <path d="M10 5V10L13.333 11.667" stroke="#9DBC98" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="tip-content">
+                        <div class="tip-title">录音时长</div>
+                        <div class="tip-text">建议录音时长在1-10分钟之间</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 权限请求弹窗 -->
+    <div class="permission-modal" id="permissionModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <path d="M24 8C19.307 8 15.5 11.807 15.5 16.5V24C15.5 28.693 19.307 32.5 24 32.5C28.693 32.5 32.5 28.693 32.5 24V16.5C32.5 11.807 28.693 8 24 8Z" fill="#374C3C"/>
+                    <path d="M12 20V24C12 30.627 17.373 36 24 36C30.627 36 36 30.627 36 24V20" stroke="#374C3C" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M24 36V44" stroke="#374C3C" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M18 44H30" stroke="#374C3C" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h3 class="modal-title">需要麦克风权限</h3>
+            <p class="modal-message">为了录制音频，需要访问您的麦克风权限。请在浏览器弹窗中点击"允许"。</p>
+            <div class="modal-actions">
+                <button class="modal-btn cancel" id="permissionCancel">取消</button>
+                <button class="modal-btn confirm" id="permissionConfirm">重试</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 上传进度弹窗 -->
+    <div class="upload-modal" id="uploadModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="upload-icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <path d="M42 30V38C42 39.061 41.579 40.078 40.828 40.828C40.078 41.579 39.061 42 38 42H10C8.939 42 7.922 41.579 7.172 40.828C6.421 40.078 6 39.061 6 38V30M34 16L24 6M24 6L14 16M24 6V30" stroke="#374C3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 class="modal-title">正在上传录音</h3>
+            <div class="upload-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text">
+                    <span id="progressPercent">0%</span>
+                    <span id="progressStatus">准备上传...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/recording.js"></script>
+</body>
+</html> 

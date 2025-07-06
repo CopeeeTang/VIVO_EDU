@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冲突场景剖析</title>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/conflict-analysis.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="status-left">
+            <span class="time">9:41</span>
+        </div>
+        <div class="status-right">
+            <div class="signal-icons">
+                <svg class="cellular" viewBox="0 0 20 12">
+                    <path d="M2 10h2v2H2v-2zm4-2h2v4H6V8zm4-2h2v6h-2V6zm4-2h2v8h-2V4z" fill="currentColor"/>
+                </svg>
+                <svg class="wifi" viewBox="0 0 18 12">
+                    <path d="M9 2C4.5 2 0.9 4.6 0 6.5l1.4 1.4C2.7 6.6 5.6 4.5 9 4.5s6.3 2.1 7.6 3.4L18 6.5C17.1 4.6 13.5 2 9 2zM9 6.5c-1.8 0-3.4 0.7-4.6 1.9L6 10c0.8-0.8 1.9-1.2 3-1.2s2.2 0.4 3 1.2l1.6-1.6C12.4 7.2 10.8 6.5 9 6.5z" fill="currentColor"/>
+                </svg>
+                <div class="battery">
+                    <div class="battery-body"></div>
+                    <div class="battery-tip"></div>
+                    <div class="battery-level"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面头部 -->
+    <div class="header">
+        <button class="back-button" onclick="App.goBack()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="page-title">冲突场景剖析</h1>
+    </div>
+
+    <!-- 主内容区域 -->
+    <main class="main-content">
+        <!-- 事件标题 -->
+        <div class="event-title">
+            <div class="event-indicator"></div>
+            <h2 class="event-name" id="eventName">关于作业和电视时间的亲子冲突</h2>
+        </div>
+
+        <!-- 冲突选择器 -->
+        <div class="conflict-selector">
+            <div class="conflict-track">
+                <div class="conflict-active-bg"></div>
+                <div class="conflict-tabs">
+                    <button class="conflict-tab active" data-conflict="1">冲突1</button>
+                    <button class="conflict-tab" data-conflict="2">冲突2</button>
+                    <button class="conflict-tab" data-conflict="3">冲突3</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分析卡片区域 -->
+        <div class="analysis-cards">
+            <!-- 冲突回顾 -->
+            <div class="analysis-card" data-type="review">
+                <h3 class="card-title">冲突回顾</h3>
+                <div class="card-content">
+                    <p class="card-description" id="reviewContent">
+                        文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+                    </p>
+                </div>
+            </div>
+
+            <!-- 冲突核心 -->
+            <div class="analysis-card" data-type="core">
+                <h3 class="card-title">冲突核心</h3>
+                <div class="card-content">
+                    <p class="card-description" id="coreContent">
+                        文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+                    </p>
+                </div>
+            </div>
+
+            <!-- 情绪评估 -->
+            <div class="analysis-card" data-type="emotion">
+                <h3 class="card-title">情绪评估</h3>
+                <div class="card-content">
+                    <p class="card-description" id="emotionContent">
+                        文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 对话详情 -->
+        <div class="dialogue-section" id="dialogueSection">
+            <div class="dialogue-container">
+                <div class="dialogue-header">
+                    <div class="dialogue-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="dialogue-title">对话详情</h3>
+                    <button class="dialogue-expand" onclick="ConflictAnalysis.toggleDialogue()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="dialogue-content" id="dialogueContent">
+                    <!-- 对话消息将通过JavaScript动态插入 -->
+                </div>
+
+                <!-- 情绪评估仪表盘 -->
+                <div class="emotion-gauge">
+                    <div class="gauge-track">
+                        <div class="gauge-line"></div>
+                        <div class="gauge-handle">
+                                                    <div class="gauge-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </div>
+                        </div>
+                        <div class="gauge-value" id="emotionValue">0.59</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 操作提示 -->
+        <div class="action-tips">
+            <div class="tip-item">
+                <div class="tip-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div class="tip-content">
+                    <h4 class="tip-title">分析建议</h4>
+                    <p class="tip-text">点击不同的冲突标签查看各个冲突的详细分析</p>
+                </div>
+            </div>
+            <div class="tip-item">
+                <div class="tip-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div class="tip-content">
+                    <h4 class="tip-title">改进方向</h4>
+                    <p class="tip-text">关注对话中的情绪波动，寻找更好的沟通方式</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 音频播放器 -->
+    <div class="audio-player-container">
+        <div class="audio-player">
+            <div class="audio-controls">
+                <button class="play-button" id="playButton">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 2.25L13.5 9L4.5 15.75V2.25Z"/>
+                    </svg>
+                </button>
+                <div class="audio-info">
+                    <div class="audio-title">胡图图_2025-05-06.mp3</div>
+                    <div class="audio-duration">
+                        <span id="currentTime">00:00</span>
+                        <span>/</span>
+                        <span id="totalTime">00:59</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="audio-progress">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-handle" id="progressHandle"></div>
+                </div>
+            </div>
+            
+            <div class="audio-actions">
+                <button class="speed-button" id="speedButton">
+                    <span class="speed-text">1x</span>
+                </button>
+                <button class="volume-button" id="volumeButton">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H2v6h4l5 4V5z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部操作按钮 -->
+    <div class="bottom-actions">
+        <button class="action-button secondary" onclick="ConflictAnalysis.exportAnalysis()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            导出分析
+        </button>
+        <button class="action-button primary" onclick="ConflictAnalysis.generateSuggestions()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+            生成建议
+        </button>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/conflict-analysis.js"></script>
+</body>
+</html> 

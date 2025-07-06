@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>历史录音报告 - 家庭教育助手</title>
+    <link rel="stylesheet" href="styles/history.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time-container">
+            <span class="time">9:41</span>
+        </div>
+        <div class="levels">
+            <div class="cellular-connection"></div>
+            <div class="wifi"></div>
+            <div class="battery">
+                <div class="battery-border"></div>
+                <div class="battery-capacity"></div>
+                <div class="battery-cap"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <div class="main-content">
+        <!-- 导航栏 -->
+        <div class="nav-bar">
+            <button class="back-btn" id="backBtn">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M17.5 21L10.5 14L17.5 7" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <h1 class="page-title">历史录音报告</h1>
+        </div>
+
+        <!-- 报告统计 -->
+        <div class="report-stats">
+            <div class="stats-card">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalReports">6</div>
+                    <div class="stat-label">总报告数</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalDuration">3.2</div>
+                    <div class="stat-label">总时长 (小时)</div>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <div class="stat-number" id="averageScore">4.2</div>
+                    <div class="stat-label">平均评分</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 筛选和排序 -->
+        <div class="filter-section">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">全部</button>
+                <button class="filter-tab" data-filter="completed">已完成</button>
+                <button class="filter-tab" data-filter="analyzing">分析中</button>
+            </div>
+            <div class="sort-dropdown">
+                <button class="sort-btn" id="sortBtn">
+                    <span class="sort-text">按时间排序</span>
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M4.5 6.75L9 11.25L13.5 6.75" stroke="#738088" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="sort-menu" id="sortMenu">
+                    <div class="sort-option" data-sort="date">按时间排序</div>
+                    <div class="sort-option" data-sort="name">按名称排序</div>
+                    <div class="sort-option" data-sort="duration">按时长排序</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 报告列表 -->
+        <div class="reports-container">
+            <div class="reports-list" id="reportsList">
+                <!-- 分析中的报告 -->
+                <div class="report-card analyzing" data-report-id="001" data-status="analyzing">
+                    <div class="card-header">
+                        <div class="report-icon analyzing-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 8V24M8 16H24" stroke="#FFA726" stroke-width="3" stroke-linecap="round"/>
+                                <circle cx="16" cy="16" r="12" stroke="#FFA726" stroke-width="2" stroke-dasharray="4 4"/>
+                            </svg>
+                        </div>
+                        <div class="report-meta">
+                            <h3 class="report-title">胡图图_2025-07-04</h3>
+                            <div class="report-subtitle">
+                                <span class="status-badge analyzing">分析中</span>
+                                <span class="upload-time">刚刚上传</span>
+                            </div>
+                        </div>
+                        <div class="card-menu">
+                            <button class="menu-btn" data-report-id="001">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="1" fill="#738088"/>
+                                    <circle cx="12" cy="5" r="1" fill="#738088"/>
+                                    <circle cx="12" cy="19" r="1" fill="#738088"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="progress-section">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="progress-text">正在分析音频内容... 65%</span>
+                        </div>
+                        <div class="action-section">
+                            <button class="action-btn secondary" disabled>
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M9 1.5V16.5M1.5 9H16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                等待分析完成
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 已完成的报告 -->
+                <div class="report-card completed" data-report-id="002" data-status="completed">
+                    <div class="card-header">
+                        <div class="report-icon completed-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M26.667 8L12 22.667L5.333 16" stroke="#4CAF50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="16" cy="16" r="12" stroke="#4CAF50" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="report-meta">
+                            <h3 class="report-title">胡图图_2025-07-03</h3>
+                            <div class="report-subtitle">
+                                <span class="status-badge completed">已完成</span>
+                                <span class="upload-time">昨天 15:30</span>
+                            </div>
+                        </div>
+                        <div class="card-menu">
+                            <button class="menu-btn" data-report-id="002">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="1" fill="#738088"/>
+                                    <circle cx="12" cy="5" r="1" fill="#738088"/>
+                                    <circle cx="12" cy="19" r="1" fill="#738088"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="report-summary">
+                            <div class="summary-stats">
+                                <div class="stat-box">
+                                    <div class="stat-icon duration">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <circle cx="8" cy="8" r="6" stroke="#9DBC98" stroke-width="1.5"/>
+                                            <path d="M8 4V8L11 11" stroke="#9DBC98" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="stat-value">37分33秒</span>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-icon conflicts">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 1.5L2.5 13.5H13.5L8 1.5Z" stroke="#F87171" stroke-width="1.5" stroke-linejoin="round"/>
+                                            <path d="M8 6V9" stroke="#F87171" stroke-width="1.5" stroke-linecap="round"/>
+                                            <circle cx="8" cy="11.5" r="0.5" fill="#F87171"/>
+                                        </svg>
+                                    </div>
+                                    <span class="stat-value">3个冲突</span>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-icon score">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 1L10.09 5.26L15 6.11L11.5 9.59L12.18 14.5L8 12.27L3.82 14.5L4.5 9.59L1 6.11L5.91 5.26L8 1Z" fill="#FACC15"/>
+                                        </svg>
+                                    </div>
+                                    <span class="stat-value">4.2分</span>
+                                </div>
+                            </div>
+                            <div class="summary-text">
+                                <p class="summary-highlight">整体表现良好，在倾听和耐心方面表现出色</p>
+                            </div>
+                        </div>
+                        <div class="action-section">
+                            <button class="action-btn secondary listen-btn" data-report-id="002">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M6.75 4.5L12.75 9L6.75 13.5V4.5Z" fill="currentColor"/>
+                                </svg>
+                                听录音
+                            </button>
+                            <button class="action-btn primary view-btn" data-report-id="002">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M2.25 4.5H15.75V13.5H2.25V4.5Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M6 7.5H12M6 10.5H10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                查看报告
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-card completed" data-report-id="003" data-status="completed">
+                    <div class="card-header">
+                        <div class="report-icon completed-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M26.667 8L12 22.667L5.333 16" stroke="#4CAF50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="16" cy="16" r="12" stroke="#4CAF50" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="report-meta">
+                            <h3 class="report-title">胡图图_2025-07-02</h3>
+                            <div class="report-subtitle">
+                                <span class="status-badge completed">已完成</span>
+                                <span class="upload-time">3天前 20:45</span>
+                            </div>
+                        </div>
+                        <div class="card-menu">
+                            <button class="menu-btn" data-report-id="003">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="1" fill="#738088"/>
+                                    <circle cx="12" cy="5" r="1" fill="#738088"/>
+                                    <circle cx="12" cy="19" r="1" fill="#738088"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="report-summary">
+                            <div class="summary-stats">
+                                <div class="stat-box">
+                                    <div class="stat-icon duration">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <circle cx="8" cy="8" r="6" stroke="#9DBC98" stroke-width="1.5"/>
+                                            <path d="M8 4V8L11 11" stroke="#9DBC98" stroke-width="1.5" stroke-linecap="round"/>
+                                        </svg>
+                                    </div>
+                                    <span class="stat-value">42分15秒</span>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-icon conflicts">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 1.5L2.5 13.5H13.5L8 1.5Z" stroke="#F87171" stroke-width="1.5" stroke-linejoin="round"/>
+                                            <path d="M8 6V9" stroke="#F87171" stroke-width="1.5" stroke-linecap="round"/>
+                                            <circle cx="8" cy="11.5" r="0.5" fill="#F87171"/>
+                                        </svg>
+                                    </div>
+                                    <span class="stat-value">2个冲突</span>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-icon score">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                            <path d="M8 1L10.09 5.26L15 6.11L11.5 9.59L12.18 14.5L8 12.27L3.82 14.5L4.5 9.59L1 6.11L5.91 5.26L8 1Z" fill="#FACC15"/>
+                                        </svg>
+                                    </div>
+                                    <span class="stat-value">4.5分</span>
+                                </div>
+                            </div>
+                            <div class="summary-text">
+                                <p class="summary-highlight">沟通技巧有所提升，建议继续保持积极的引导方式</p>
+                            </div>
+                        </div>
+                        <div class="action-section">
+                            <button class="action-btn secondary listen-btn" data-report-id="003">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M6.75 4.5L12.75 9L6.75 13.5V4.5Z" fill="currentColor"/>
+                                </svg>
+                                听录音
+                            </button>
+                            <button class="action-btn primary view-btn" data-report-id="003">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                    <path d="M2.25 4.5H15.75V13.5H2.25V4.5Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M6 7.5H12M6 10.5H10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                                查看报告
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 空状态 -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                    <path d="M26.667 36.667V20C26.667 15.858 27.857 11.929 30.358 9.428C32.858 6.928 36.787 5.738 40.929 5.738C45.071 5.738 49 6.928 51.5 9.428C54 11.929 55.191 15.858 55.191 20V36.667" stroke="#9DBC98" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 36.667H60C65.523 36.667 70 41.144 70 46.667V66.667C70 72.19 65.523 76.667 60 76.667H20C14.477 76.667 10 72.19 10 66.667V46.667C10 41.144 14.477 36.667 20 36.667Z" stroke="#9DBC98" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3 class="empty-title">暂无录音报告</h3>
+            <p class="empty-description">开始录制您的第一段家庭对话，获取专业的教育分析报告</p>
+            <button class="empty-action-btn" onclick="window.location.href='recording.html'">
+                开始录音
+            </button>
+        </div>
+    </div>
+
+    <!-- 操作菜单弹窗 -->
+    <div class="menu-modal" id="menuModal">
+        <div class="menu-overlay"></div>
+        <div class="menu-content">
+            <div class="menu-header">
+                <h3 class="menu-title">操作选项</h3>
+                <button class="menu-close" id="menuClose">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="#738088" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="menu-options">
+                <button class="menu-option" data-action="rename">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M14.167 2.5C14.497 2.17 14.952 2 15.417 2C15.649 2 15.879 2.046 16.092 2.135C16.306 2.225 16.497 2.356 16.655 2.522C16.814 2.687 16.937 2.883 17.018 3.098C17.1 3.313 17.139 3.542 17.139 3.772C17.139 4.003 17.1 4.232 17.018 4.447C16.937 4.662 16.814 4.858 16.655 5.023L5.833 15.845L1.667 17.5L3.322 13.334L14.167 2.5Z" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    重命名
+                </button>
+                <button class="menu-option" data-action="export">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M17.5 12.5V15.833C17.5 16.274 17.325 16.698 17.012 17.012C16.698 17.325 16.274 17.5 15.833 17.5H4.167C3.726 17.5 3.302 17.325 2.988 17.012C2.675 16.698 2.5 16.274 2.5 15.833V12.5M5.833 8.333L10 4.167M10 4.167L14.167 8.333M10 4.167V12.5" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    导出报告
+                </button>
+                <button class="menu-option" data-action="share">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M15 6.667C16.381 6.667 17.5 5.548 17.5 4.167C17.5 2.786 16.381 1.667 15 1.667C13.619 1.667 12.5 2.786 12.5 4.167C12.5 5.548 13.619 6.667 15 6.667Z" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M5 12.5C6.381 12.5 7.5 11.381 7.5 10C7.5 8.619 6.381 7.5 5 7.5C3.619 7.5 2.5 8.619 2.5 10C2.5 11.381 3.619 12.5 5 12.5Z" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 18.333C16.381 18.333 17.5 17.214 17.5 15.833C17.5 14.452 16.381 13.333 15 13.333C13.619 13.333 12.5 14.452 12.5 15.833C12.5 17.214 13.619 18.333 15 18.333Z" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7.158 11.175L12.842 14.658M12.842 5.342L7.158 8.825" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    分享
+                </button>
+                <button class="menu-option danger" data-action="delete">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M2.5 5H4.167H17.5M6.667 5V3.333C6.667 2.892 6.842 2.468 7.155 2.155C7.468 1.842 7.892 1.667 8.333 1.667H11.667C12.108 1.667 12.532 1.842 12.845 2.155C13.158 2.468 13.333 2.892 13.333 3.333V5M15.833 5V16.667C15.833 17.108 15.658 17.532 15.345 17.845C15.032 18.158 14.608 18.333 14.167 18.333H5.833C5.392 18.333 4.968 18.158 4.655 17.845C4.342 17.532 4.167 17.108 4.167 16.667V5H15.833Z" stroke="#F87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.333 9.167V14.167M11.667 9.167V14.167" stroke="#F87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    删除
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认删除弹窗 -->
+    <div class="confirm-modal" id="confirmModal">
+        <div class="confirm-overlay"></div>
+        <div class="confirm-content">
+            <div class="confirm-icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <path d="M24 4L4 44H44L24 4Z" stroke="#F87171" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M24 16V28" stroke="#F87171" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="24" cy="36" r="2" fill="#F87171"/>
+                </svg>
+            </div>
+            <h3 class="confirm-title">确认删除</h3>
+            <p class="confirm-message">删除后将无法恢复，确定要删除这个录音报告吗？</p>
+            <div class="confirm-actions">
+                <button class="confirm-btn cancel" id="confirmCancel">取消</button>
+                <button class="confirm-btn delete" id="confirmDelete">确认删除</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/history.js"></script>
+</body>
+</html> 

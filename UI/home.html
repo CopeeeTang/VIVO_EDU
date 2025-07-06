@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 - 家庭教育助手</title>
+    <link rel="stylesheet" href="styles/home.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time-container">
+            <span class="time">9:41</span>
+        </div>
+        <div class="levels">
+            <div class="cellular-connection"></div>
+            <div class="wifi"></div>
+            <div class="battery">
+                <div class="battery-border"></div>
+                <div class="battery-capacity"></div>
+                <div class="battery-cap"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 背景装饰圆形 -->
+    <div class="background-circle"></div>
+
+    <!-- 主要内容 -->
+    <div class="main-content">
+        <!-- 顶部绿色区域 -->
+        <div class="top-section">
+            <!-- 用户信息卡片 -->
+            <div class="user-card">
+                <div class="progress-text">
+                    <span class="progress-day">今天是你向辅导专家进阶的第xxx天</span>
+                </div>
+                <div class="user-info">
+                    <div class="avatar-container">
+                        <div class="user-avatar"></div>
+                    </div>
+                    <div class="greeting-section">
+                        <h1 class="greeting-text">Hi, Martina</h1>
+                    </div>
+                </div>
+                <div class="daily-quote">
+                    <h3 class="quote-title">每日一句</h3>
+                    <p class="quote-content">教育的根本目的不是灌输知识，而是激发孩子内在的学习热情和创造力。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 功能区域 -->
+        <div class="function-section">
+            <!-- 主要功能按钮 -->
+            <div class="main-functions">
+                <div class="function-row">
+                    <div class="function-card recording-card" onclick="App.navigateTo('recording')">
+                        <h3 class="function-title">开始录音</h3>
+                        <div class="function-decoration recording-decoration"></div>
+                        <div class="microphone-icon">
+                            <svg width="81" height="81" viewBox="0 0 81 81" fill="none">
+                                <path d="M40.5 5.14C44.34 5.14 47.46 8.26 47.46 12.1V40.5C47.46 44.34 44.34 47.46 40.5 47.46C36.66 47.46 33.54 44.34 33.54 40.5V12.1C33.54 8.26 36.66 5.14 40.5 5.14ZM54.39 33.54V40.5C54.39 48.51 47.83 55.07 39.82 55.07H41.18C33.17 55.07 26.61 48.51 26.61 40.5V33.54H19.65V40.5C19.65 52.35 28.65 62.03 40.5 62.03C52.35 62.03 61.35 52.35 61.35 40.5V33.54H54.39Z" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="function-card upload-card" onclick="App.navigateTo('upload')">
+                        <h3 class="function-title">上传文件</h3>
+                        <div class="function-decoration upload-decoration"></div>
+                        <div class="upload-icon">
+                            <svg width="96" height="96" viewBox="0 0 96 96" fill="none">
+                                <path d="M24 72V60H72V72H24ZM24 48L36 36L42 42L48 36L60 48H24ZM12 84V24C12 20.64 13.344 17.76 16.032 15.36C18.72 12.96 21.6 11.76 24.96 11.76H71.04C74.4 11.76 77.28 12.96 79.68 15.36C82.08 17.76 83.28 20.64 83.28 24V84C83.28 87.36 82.08 90.24 79.68 92.64C77.28 95.04 74.4 96.24 71.04 96.24H24.96C21.6 96.24 18.72 95.04 16.032 92.64C13.344 90.24 12 87.36 12 84Z" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="function-row">
+                    <div class="function-card history-card" onclick="App.navigateTo('history')">
+                        <h3 class="function-title">历史录音报告</h3>
+                        <div class="history-preview">
+                            <div class="preview-card">
+                                <div class="report-icon">
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                                        <path d="M5 7.5V22.5C5 23.88 6.12 25 7.5 25H22.5C23.88 25 25 23.88 25 22.5V7.5C25 6.12 23.88 5 22.5 5H7.5C6.12 5 5 6.12 5 7.5Z" fill="#627967"/>
+                                    </svg>
+                                </div>
+                                <div class="report-info">
+                                    <h4 class="report-title">胡图图_2025-05-06</h4>
+                                    <div class="report-stats">
+                                        <div class="stat-item">
+                                            <span class="stat-dot duration"></span>
+                                            <span class="stat-text">录音时长：37分33秒</span>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="stat-item">
+                                                <span class="stat-dot conflict"></span>
+                                                <span class="stat-text">冲突场景：3个</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-dot improve"></span>
+                                                <span class="stat-text">待提高：情绪管理技巧</span>
+                                            </div>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-dot advantage"></span>
+                                            <span class="stat-text">优势：耐心倾听与引导</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="view-all">
+                                <span class="view-all-text">查看全部报告</span>
+                                <div class="view-all-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 专家咨询区域 -->
+        <div class="expert-section">
+            <div class="section-header">
+                <h2 class="section-title">专家咨询与支持</h2>
+                <span class="view-all-link">查看全部</span>
+            </div>
+            <div class="expert-cards">
+                <div class="expert-card">
+                    <div class="expert-info">
+                        <div class="expert-avatar"></div>
+                        <div class="expert-details">
+                            <h3 class="expert-name">Dr. Lucas Martins</h3>
+                            <div class="expert-meta">
+                                <div class="rating">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M9 1.5L11.09 6.26L16.5 7.11L12.75 10.69L13.68 16.08L9 13.77L4.32 16.08L5.25 10.69L1.5 7.11L6.91 6.26L9 1.5Z" fill="#FACC15"/>
+                                    </svg>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="separator">•</span>
+                                <div class="specialty">
+                                    <span class="specialty-icon">🧠</span>
+                                    <span class="specialty-text">心理健康</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 0C3.6 0 0 3.6 0 8C0 12.4 3.6 16 8 16C12.4 16 16 12.4 16 8C16 3.6 12.4 0 8 0ZM8 14C4.7 14 2 11.3 2 8C2 4.7 4.7 2 8 2C11.3 2 14 4.7 14 8C14 11.3 11.3 14 8 14Z" fill="#9DBC98"/>
+                                </svg>
+                                <span class="time-slot">10.10 AM - 12.00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expert-action">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-info">
+                        <div class="expert-avatar"></div>
+                        <div class="expert-details">
+                            <h3 class="expert-name">Dr. Mauro Alex</h3>
+                            <div class="expert-meta">
+                                <div class="rating">
+                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                        <path d="M9 1.5L11.09 6.26L16.5 7.11L12.75 10.69L13.68 16.08L9 13.77L4.32 16.08L5.25 10.69L1.5 7.11L6.91 6.26L9 1.5Z" fill="#FACC15"/>
+                                    </svg>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="separator">•</span>
+                                <div class="specialty">
+                                    <span class="specialty-icon">⚡</span>
+                                    <span class="specialty-text">ADHD儿童</span>
+                                </div>
+                            </div>
+                            <div class="availability">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M8 0C3.6 0 0 3.6 0 8C0 12.4 3.6 16 8 16C12.4 16 16 12.4 16 8C16 3.6 12.4 0 8 0ZM8 14C4.7 14 2 11.3 2 8C2 4.7 4.7 2 8 2C11.3 2 14 4.7 14 8C14 11.3 11.3 14 8 14Z" fill="#9DBC98"/>
+                                </svg>
+                                <span class="time-slot">12.00 AM - 07.00 Pm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="expert-action">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="#374C3C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 教育资源区域 -->
+        <div class="resource-section">
+            <div class="section-header">
+                <h2 class="section-title">教育资源</h2>
+                <span class="view-all-link">查看全部</span>
+            </div>
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <div class="resource-image"></div>
+                    <div class="resource-info">
+                        <h3 class="resource-title">书籍名称书籍名称书籍名称书籍名称书籍名称书籍名称</h3>
+                        <div class="resource-meta">
+                            <span class="author">作者</span>
+                            <span class="separator">•</span>
+                            <span class="keyword">关键词</span>
+                        </div>
+                    </div>
+                    <div class="resource-stats">
+                        <div class="stat">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M9 1.5L2.25 4.5L9 7.5L15.75 4.5L9 1.5Z" fill="#FEB432"/>
+                            </svg>
+                            <span class="stat-count">5000</span>
+                        </div>
+                        <div class="stat">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M9 3C5.25 3 2.25 6 2.25 6S5.25 15 9 15S15.75 6 15.75 6S12.75 3 9 3Z" fill="#4793AF"/>
+                                <circle cx="9" cy="9" r="2.25" fill="#4793AF"/>
+                            </svg>
+                            <span class="stat-count">2000</span>
+                        </div>
+                        <div class="stat">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M15 7.5L9 3L3 7.5L9 12L15 7.5Z" fill="#9DBC98"/>
+                            </svg>
+                            <span class="stat-count">25</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-image"></div>
+                    <div class="resource-info">
+                        <h3 class="resource-title">书籍名称书籍名称</h3>
+                        <div class="resource-meta">
+                            <span class="author">作者</span>
+                            <span class="separator">•</span>
+                            <span class="keyword">关键词</span>
+                        </div>
+                    </div>
+                    <div class="resource-stats">
+                        <div class="stat">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M9 1.5L2.25 4.5L9 7.5L15.75 4.5L9 1.5Z" fill="#FEB432"/>
+                            </svg>
+                            <span class="stat-count">2000</span>
+                        </div>
+                        <div class="stat">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M9 3C5.25 3 2.25 6 2.25 6S5.25 15 9 15S15.75 6 15.75 6S12.75 3 9 3Z" fill="#4793AF"/>
+                                <circle cx="9" cy="9" r="2.25" fill="#4793AF"/>
+                            </svg>
+                            <span class="stat-count">3002</span>
+                        </div>
+                        <div class="stat">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M15 7.5L9 3L3 7.5L9 12L15 7.5Z" fill="#9DBC98"/>
+                            </svg>
+                            <span class="stat-count">25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/home.js"></script>
+</body>
+</html> 

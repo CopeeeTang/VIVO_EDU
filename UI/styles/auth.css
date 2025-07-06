@@ -1,0 +1,470 @@
+/* 认证页面样式 - 注册和登录页面专用样式 */
+
+/* 认证页面基础样式 */
+.auth-page {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 认证页面头部 */
+.auth-header {
+  background: transparent;
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-medium);
+  color: var(--accent-color);
+}
+
+.auth-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-small);
+  font-family: var(--font-title);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+/* 认证卡片样式 */
+.auth-card {
+  background: var(--accent-color);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow-heavy);
+  max-width: 420px;
+  margin: 0 auto;
+  padding: var(--spacing-xl);
+}
+
+.auth-card-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.auth-card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-small);
+}
+
+.auth-card-subtitle {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* 认证表单样式 */
+.auth-form {
+  width: 100%;
+}
+
+.auth-form .input-group {
+  margin-bottom: var(--spacing-large);
+}
+
+.auth-form .input-label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.label-text {
+  font-size: 0.95rem;
+}
+
+.label-required {
+  color: var(--error-color);
+  font-weight: bold;
+}
+
+.label-optional {
+  color: var(--text-light);
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+/* 密码输入框包装器 */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper .input-field {
+  padding-right: 60px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--spacing-medium);
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: var(--spacing-small);
+  border-radius: var(--border-radius);
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: var(--primary-color);
+}
+
+.password-toggle-text {
+  font-size: 0.85rem;
+}
+
+/* 输入提示样式 */
+.input-hint {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  margin-top: var(--spacing-small);
+  font-style: italic;
+}
+
+/* 复选框样式 */
+.checkbox-group {
+  margin-bottom: var(--spacing-large);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-medium);
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-mark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkbox-input:checked + .checkbox-mark {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkbox-input:checked + .checkbox-mark::after {
+  content: '✓';
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.checkbox-text {
+  color: var(--text-color);
+}
+
+/* 链接样式 */
+.link-primary {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.link-primary:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* 社交登录样式 */
+.social-login {
+  margin-top: var(--spacing-xl);
+}
+
+.social-divider {
+  position: relative;
+  text-align: center;
+  margin-bottom: var(--spacing-large);
+}
+
+.social-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.social-divider-text {
+  background: var(--accent-color);
+  color: var(--text-light);
+  font-size: 0.85rem;
+  padding: 0 var(--spacing-medium);
+  position: relative;
+  z-index: 1;
+}
+
+.social-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-medium);
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-small);
+  padding: var(--spacing-medium);
+  font-size: 0.9rem;
+}
+
+.social-icon {
+  font-size: 1.2rem;
+}
+
+/* 认证页面底部 */
+.auth-footer {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-large);
+  border-top: 1px solid var(--border-color);
+}
+
+.auth-footer-text {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.auth-footer-section {
+  margin-top: auto;
+  padding: var(--spacing-large);
+  text-align: center;
+}
+
+.footer-text {
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* 进度条样式 */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: var(--spacing-medium) 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  width: 0%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+/* 表单验证样式 */
+.input-field:invalid {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+}
+
+.input-field:valid {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.input-field:focus:invalid {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+}
+
+.input-field:focus:valid {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* 错误消息样式 */
+.error-message {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin-top: var(--spacing-small);
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+/* 成功消息样式 */
+.success-message {
+  color: var(--success-color);
+  font-size: 0.8rem;
+  margin-top: var(--spacing-small);
+  display: none;
+}
+
+.success-message.show {
+  display: block;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .auth-header {
+    padding: var(--spacing-large) var(--spacing-medium);
+  }
+  
+  .auth-title {
+    font-size: 2rem;
+  }
+  
+  .auth-subtitle {
+    font-size: 1rem;
+  }
+  
+  .auth-card {
+    margin: 0 var(--spacing-medium);
+    padding: var(--spacing-large);
+  }
+  
+  .auth-card-title {
+    font-size: 1.5rem;
+  }
+  
+  .social-buttons {
+    grid-template-columns: 1fr;
+  }
+  
+  .checkbox-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-header {
+    padding: var(--spacing-medium);
+  }
+  
+  .auth-title {
+    font-size: 1.8rem;
+  }
+  
+  .auth-card {
+    margin: 0 var(--spacing-small);
+    padding: var(--spacing-medium);
+  }
+  
+  .auth-card-title {
+    font-size: 1.3rem;
+  }
+  
+  .password-wrapper .input-field {
+    padding-right: 50px;
+  }
+  
+  .password-toggle {
+    right: var(--spacing-small);
+    font-size: 0.8rem;
+  }
+}
+
+/* 动画效果 */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* 加载状态 */
+.btn.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 焦点样式增强 */
+.btn:focus,
+.input-field:focus,
+.checkbox-input:focus + .checkbox-mark,
+.password-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 禁用状态样式 */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.input-field:disabled {
+  background-color: var(--background-color);
+  cursor: not-allowed;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .auth-card {
+    border: 2px solid var(--text-color);
+  }
+  
+  .input-field {
+    border-width: 2px;
+  }
+  
+  .checkbox-mark {
+    border-width: 2px;
+  }
+} 

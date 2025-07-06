@@ -1,0 +1,104 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+文本向量
+
+更新时间：2025-07-01 02:35:23
+
+服务简介
+将用户提供的文本信息表示成计算机可识别的实数向量，用数值向量来表示文本的语义。
+
+接口说明
+访问地址：https://api-ai.vivo.com.cn/embedding-model-api/predict/batch
+
+访问方式：POST
+
+请求参数
+Header
+
+参数	类型	是否必须	值
+Content-Type	string	是	application/json
+X-AI-GATEWAY-APP-ID	string	是	AIGC官网给审核通过的队伍分配的app_id（见官网右上角个人资料-参赛平台-应用赛道参赛资源）
+X-AI-GATEWAY-TIMESTAMP	string	是	请求时的Unix时间戳，以秒为单位
+X-AI-GATEWAY-NONCE	string	是	8位的随机字符串
+X-AI-GATEWAY-SIGNED-HEADERS	string	是	填写 “x-ai-gateway-app-id;x-ai-gateway-timestamp;x-ai-gateway-nonce”
+X-AI-GATEWAY-SIGNATURE	string	是	填写签名字符串 ，计算方式见鉴权方式文档签名计算部分
+Body
+
+参数名称	类型	是否必须	说明
+model_name	string	是	文本向量化模型名称，当前支持：m3e-base、bge-base-zh-v1.5
+sentences	array	是	需要向量化文本的JSON格式数组，示例：[“自动追焦相关报表”, “太古汇内云集逾180家知名品牌”]
+model_name说明
+
+model_name	说明
+bge-base-zh-v1.5	近期开源很优秀的模型，擅长中文的召回场景，即较短的query召回较长的文本。query前面需要加上instruction：“为这个句子生成表示以用于检索相关文章：”。介绍见https://huggingface.co/BAAI/bge-base-zh-v1.5
+m3e-base	近期开源很优秀的模型，擅长中文的文本比对场景，介绍见https://huggingface.co/moka-ai/m3e-base
+我们重点优化了bge-base-zh-v1.5和m3e-base模型的推理性能，分别是我们调研的效果最好的中文模型和英文模型。
+
+请求参数示例
+
+# Content-Type设置为JSON格式，如"Content-Type: application/json" 
+{
+    "model_name": "m3e-base",
+    "sentences":["自动追焦相关报表","太古汇内云集逾180家知名品牌","其中逾70个品牌为第一次进驻广州","交通：商场M层连通地铁三号线石牌桥站；毗邻地铁一号线体育中心站。"]
+}
+如果是bge-base-zh模型，长文本的请求示例
+
+# Content-Type设置为JSON格式，如"Content-Type: application/json" 
+{
+    "model_name": "bge-base-zh-v1.5",
+    "sentences":["自动追焦相关报表","太古汇内云集逾180家知名品牌","其中逾70个品牌为第一次进驻广州","交通：商场M层连通地铁三号线石牌桥站；毗邻地铁一号线体育中心站。"]
+}
+如果是bge-base-zh模型，短query的请求示例
+
+# Content-Type设置为JSON格式，如"Content-Type: application/json" 
+{
+    "model_name": "bge-base-zh-v1.5",
+    "sentences":["为这个句子生成表示以用于检索相关文章：地铁交通","为这个句子生成表示以用于检索相关文章：太古汇"]
+}
+响应结果
+参数	类型	说明
+data	array	对应sentence的文本向量的实际值
+返回响应示例
+
+# data主体是向量的二维数组，向量维度与模型相关
+{"data":[[-0.006009635981172323,0.0320364348590374,-0.012086838483810425,0.04545353353023529,....],[-0.04749463126063347,0.03422294184565544,0.011880395002663136,...]]
+调用示例
+python示例
+
+备注：auth_uitl源码见鉴权方式-代码实现示例
+
+#!/usr/bin/env python
+# encoding: utf-8
+
+import requests
+from auth_util import gen_sign_headers
+
+# 请注意替换APP_ID、APP_KEY
+APP_ID = 'your_app_id'
+APP_KEY = 'your_app_key'
+DOMAIN = 'api-ai.vivo.com.cn'
+URI = '/embedding-model-api/predict/batch'
+METHOD = 'POST'
+
+
+def embedding():
+    params = {}
+    post_data = {
+        "model_name": "m3e-base",
+        "sentences": ["豫章故郡，洪都新府", "星分翼轸，地接衡庐"]
+    }
+    headers = gen_sign_headers(APP_ID, APP_KEY, METHOD, URI, params)
+
+    url = 'https://{}{}'.format(DOMAIN, URI)
+    response = requests.post(url, json=post_data, headers=headers)
+    if response.status_code == 200:
+        print(response.json())
+    else:
+        print(response.status_code, response.text)
+
+
+if __name__ == '__main__':
+    embedding()

@@ -35,3 +35,4 @@ aiofiles
 nltk
 faiss-cpu
 cryptography
+psutil

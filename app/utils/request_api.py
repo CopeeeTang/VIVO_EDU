@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
-import base64
-import hashlib
-import hmac
 import json
 import os
 import time
-import urllib
-import requests
 import pandas as pd
 from pydub import AudioSegment
 import logging
@@ -14,112 +9,46 @@ import tiktoken
 from openai import OpenAI
 import asyncio
 import aiohttp
+from .vivo_audio_client import create_vivo_audio_client
 
 # 配置日志
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# 配置常量
-LFASR_HOST = 'https://raasr.xfyun.cn/v2/api'
-API_UPLOAD = '/upload'
-API_GET_RESULT = '/getResult'
-ROLE_TYPE = 1
-
-
-class RequestApi:
+def transcribe_file(file_path, api_details=None):
     """
-    处理与API交互的类，包括上传文件和获取结果。
-    """
-
-    def __init__(self, appid, secret_key, upload_file_path):
-        self.appid = appid
-        self.secret_key = secret_key
-        self.upload_file_path = upload_file_path
-        self.ts = str(int(time.time()))
-        self.signa = self.get_signa()
-        logging.debug(f"初始化 RequestApi: appid={appid}, upload_file_path={upload_file_path}")
-
-    def get_signa(self):
-        """
-        生成签名。
-        """
-        md5_hash = hashlib.md5((self.appid + self.ts).encode('utf-8')).hexdigest()
-        md5_bytes = md5_hash.encode('utf-8')
-        signa = hmac.new(self.secret_key.encode('utf-8'), md5_bytes, hashlib.sha1).digest()
-        signa_b64 = base64.b64encode(signa).decode('utf-8')
-        logging.debug(f"生成签名: {signa_b64}")
-        return signa_b64
-
-    def upload(self):
-        """
-        上传文件到API。
-        """
-        file_size = os.path.getsize(self.upload_file_path)
-        file_name = os.path.basename(self.upload_file_path)
-
-        params = {
-            'appId': self.appid,
-            'signa': self.signa,
-            'ts': self.ts,
-            'fileSize': file_size,
-            'fileName': file_name,
-            'duration': "200",
-            'roleType': ROLE_TYPE
-        }
-
-        with open(self.upload_file_path, 'rb') as f:
-            data = f.read()
-
-        response = requests.post(
-            url=f"{LFASR_HOST}{API_UPLOAD}?{urllib.parse.urlencode(params)}",
-            headers={"Content-type": "application/json"},
-            data=data
-        )
-        logging.debug(f"上传URL: {response.request.url}")
-        logging.debug(f"上传响应: {response.text}")
-        return response.json()
-
-    def get_result(self):
-        """
-        获取转写结果。
-        """
-        upload_response = self.upload()
-        order_id = upload_response['content']['orderId']
-        params = {
-            'appId': self.appid,
-            'signa': self.signa,
-            'ts': self.ts,
-            'orderId': order_id,
-            'resultType': "transfer,predict"
-        }
-
-        status = 3  # 初始状态
-        while status == 3:
-            response = requests.post(
-                url=f"{LFASR_HOST}{API_GET_RESULT}?{urllib.parse.urlencode(params)}",
-                headers={"Content-type": "application/json"}
-            )
-            result = response.json()
-            status = result['content']['orderInfo']['status']
-            logging.debug(f"获取结果状态: {status}")
-            if status == 4:
-                break
-            time.sleep(5)
-        return result
-
-def transcribe_file(file_path, api_details):
-    """
-    转写单个文件并获取结果。
+    使用vivo API转写单个文件并获取结果。
     """
     logging.info(f"开始转写文件: {file_path}")
-    api = RequestApi(
-        appid=api_details['appid'],
-        secret_key=api_details['secret_key'],
-        upload_file_path=file_path
-    )
+    
     try:
-        result = api.get_result()
-        logging.debug(f"转写结果: {result}")
-        return result
+        # 创建vivo音频客户端
+        vivo_client = create_vivo_audio_client()
+        
+        # 获取音频文件类型
+        file_extension = os.path.splitext(file_path)[1].lower()
+        audio_type_map = {
+            '.wav': 'auto',
+            '.mp3': 'auto',
+            '.m4a': 'auto',
+            '.aac': 'auto',
+            '.ogg': 'auto',
+            '.pcm': 'pcm'
+        }
+        audio_type = audio_type_map.get(file_extension, 'auto')
+        
+        # 使用vivo API进行转写
+        result = vivo_client.transcribe_file(file_path, audio_type)
+        
+        # 将vivo结果转换为原有格式
+        converted_result = {
+            'content': {
+                'orderResult': json.dumps(result)
+            }
+        }
+        
+        logging.debug(f"转写结果: {converted_result}")
+        return converted_result
+        
     except Exception as e:
         logging.error(f"转写过程中发生错误: {e}")
         return None
@@ -134,6 +63,7 @@ def format_time(ms):
     return f"{hours:02}:{minutes:02}:{seconds:02},{milliseconds:03}"
 
 def process_json(json_data):
+    """处理原有的JSON数据格式（保留用于兼容）"""
     logging.info("开始处理JSON数据")
     result = []
 
@@ -155,12 +85,133 @@ def process_json(json_data):
     logging.debug(f"处理后的JSON数据: {result}")
     return result
 
+def process_vivo_result(vivo_data):
+    """处理vivo API返回的结果格式"""
+    logging.info("开始处理vivo转写结果")
+    logging.info(f"原始vivo数据结构: {json.dumps(vivo_data, ensure_ascii=False, indent=2)}")
+    result = []
+    
+    try:
+        # 检查vivo API返回的不同可能格式
+        # 格式1: 包含segments字段
+        segments = vivo_data.get('segments', [])
+        if segments:
+            logging.info(f"找到segments字段，包含{len(segments)}个片段")
+            for i, segment in enumerate(segments):
+                speaker_id = segment.get('speaker_id', 0)
+                speaker = f"Speaker {speaker_id + 1}"
+                
+                start_time_ms = segment.get('start_time', 0)
+                end_time_ms = segment.get('end_time', 0)
+                start_time = format_time(start_time_ms)
+                end_time = format_time(end_time_ms)
+                
+                text = segment.get('text', '').strip()
+                if text:
+                    result.append([speaker, start_time, end_time, text])
+            
+            logging.info(f"从segments提取到{len(result)}条数据")
+            return result
+        
+        # 格式2: 包含sentences字段
+        sentences = vivo_data.get('sentences', [])
+        if sentences:
+            logging.info(f"找到sentences字段，包含{len(sentences)}个句子")
+            for i, sentence in enumerate(sentences):
+                speaker_id = sentence.get('speaker_id', 0)
+                speaker = f"Speaker {speaker_id + 1}"
+                
+                start_time_ms = sentence.get('begin_time', sentence.get('start_time', 0))
+                end_time_ms = sentence.get('end_time', sentence.get('finish_time', 0))
+                start_time = format_time(start_time_ms)
+                end_time = format_time(end_time_ms)
+                
+                text = sentence.get('text', sentence.get('sentence', '')).strip()
+                if text:
+                    result.append([speaker, start_time, end_time, text])
+            
+            logging.info(f"从sentences提取到{len(result)}条数据")
+            return result
+        
+        # 格式3: 包含result字段（vivo API格式）
+        if 'result' in vivo_data:
+            result_data = vivo_data['result']
+            logging.info(f"找到result字段: {result_data}")
+            
+            # 如果result是列表
+            if isinstance(result_data, list):
+                for i, item in enumerate(result_data):
+                    if isinstance(item, dict):
+                        # vivo API格式：使用bg、ed、onebest、speaker字段
+                        if 'onebest' in item:
+                            text = item.get('onebest', '').strip()
+                            if text:  # 过滤空文本
+                                start_time_ms = item.get('bg', 0)
+                                end_time_ms = item.get('ed', 0)
+                                start_time = format_time(start_time_ms)
+                                end_time = format_time(end_time_ms)
+                                
+                                # 正确利用speaker字段
+                                speaker_id = item.get('speaker', 1)  # 默认为1
+                                speaker = f"Speaker {speaker_id}"
+                                
+                                result.append([speaker, start_time, end_time, text])
+                        else:
+                            # 通用格式
+                            text = item.get('text', item.get('sentence', '')).strip()
+                            if text:
+                                speaker_id = item.get('speaker', item.get('speaker_id', 1))
+                                speaker = f"Speaker {speaker_id}"
+                                result.append([speaker, "00:00:00,000", "00:00:00,000", text])
+            # 如果result是字符串
+            elif isinstance(result_data, str) and result_data.strip():
+                result.append([f"Speaker 1", "00:00:00,000", "00:00:00,000", result_data.strip()])
+            
+            logging.info(f"从result提取到{len(result)}条数据")
+            return result
+        
+        # 格式4: 直接包含text字段
+        if 'text' in vivo_data:
+            text = vivo_data['text'].strip()
+            if text:
+                result.append([f"Speaker 1", "00:00:00,000", "00:00:00,000", text])
+                logging.info(f"从text字段提取到1条数据")
+                return result
+        
+        # 格式5: lattice格式（兼容旧格式）
+        if 'lattice' in vivo_data:
+            logging.info("检测到lattice格式，使用旧处理方式")
+            return process_json(vivo_data)
+        
+        # 如果都没有找到，尝试直接解析为文本
+        if isinstance(vivo_data, str) and vivo_data.strip():
+            result.append([f"Speaker 1", "00:00:00,000", "00:00:00,000", vivo_data.strip()])
+            logging.info("将整个数据作为文本处理")
+            return result
+        
+        # 遍历所有键值，查找可能的文本内容
+        logging.warning("未识别的数据格式，尝试提取所有文本内容")
+        for key, value in vivo_data.items():
+            if isinstance(value, str) and value.strip() and len(value) > 10:
+                result.append([f"Speaker 1", "00:00:00,000", "00:00:00,000", value.strip()])
+                logging.info(f"从字段{key}提取到文本")
+        
+        if result:
+            logging.info(f"通过遍历提取到{len(result)}条数据")
+            return result
+            
+    except Exception as e:
+        logging.error(f"处理vivo结果时发生错误: {e}")
+    
+    logging.warning("无法从vivo数据中提取有效内容")
+    return result
+
 def combine_rows(df):
     """
     根据阈值合并相邻的相同说话人内容。
     """
     logging.info("开始合并行")
-    MERGE_THRESHOLD = 1  # 秒
+    MERGE_THRESHOLD = 5  # 增加到5秒，减少过度合并
     combined = []
     df['start_time'] = pd.to_datetime(df['start_time'], format="%H:%M:%S,%f")
     df['end_time'] = pd.to_datetime(df['end_time'], format="%H:%M:%S,%f")
@@ -299,57 +350,80 @@ def process_transcription_results(input_file: str, csv_path: str, json_path: str
 def conflict_extraction(data_json: str)->dict:
     return None
 
-
-
 def assign_roles(data_json: str, api_key: str) -> dict:
     """
     根据对话内容为讲话者分配角色。
     """
     logging.info("开始分配角色")
     prompt = """
-***Task Description***
-Identify the roles of speakers in parent-child conversations during parental homework involvement scenarios using provided audio segments. Due to potential inaccuracies in speaker identification from the audio API, roles must be inferred from chat content. Speakers can be labeled as 'parent', 'child', or 'others'. When only two speakers are identified, they are labeled as 'parent' and 'child'. For cases with more speakers, determine if they share roles or if the recording includes additional speakers. 'Others' may occur when music or learning material audio is detected during homework sessions, resulting in a new speaker recognition.
+***任务说明***
+根据家庭作业辅导场景中的亲子对话内容，为说话者分配角色。需要分析对话内容来推断角色，因为音频API的说话人识别可能不准确。
 
-***Input Format***
-A list of dictionaries, where each dictionary represents an audio segment and includes the following keys:
+说话者可以标记为 'parent'（家长）、'child'（孩子）或 'others'（其他）。当只识别到两个说话者时，通常为家长和孩子。
 
-"speaker": String representing the speaker's name
-"start_time": String indicating the start time of the segment
-"end_time": String indicating the end time of the segment
-"content": String containing the segment's content
+***角色识别指南***
+**家长特征：**
+- 使用指导性语言："你应该..."、"记住..."、"我们来..."
+- 表现出教育责任：检查作业、设定规则、监督学习
+- 使用成熟词汇和完整句式
+- 表达期望和要求："写完作业"、"认真点"、"时间到了"
+- 给出指令和建议
+- 表现出关心和督促
 
-***Output Format***
-A dictionary mapping speaker names to their roles. Must return the dictionary in JSON format.
+**孩子特征：**
+- 使用简单直接的语言
+- 表达需求或抱怨："我不想..."、"太难了"、"我做不来"
+- 回应家长的指令
+- 表现出学习中的困惑或抵触
+- 使用较为随意的表达方式
+- 可能出现撒娇、讨价还价的语气
 
-***Example***
-<Input>
+**Others情况：**
+- 学习音频或背景音乐被识别为新说话者
+- 明显不是家长或孩子的声音
+
+***输入格式***
+包含以下字段的字典列表：
+"speaker"：说话者名称（如"Speaker 1"）
+"start_time"：开始时间
+"end_time"：结束时间  
+"content"：对话内容
+
+***输出格式***
+必须返回JSON格式的字典，将说话者名称映射到角色。
+
+***示例***
+<输入>
 [
     {
         "speaker": "Speaker 1",
         "start_time": "00:00:15.620000",
         "end_time": "00:00:25.390000",
-        "content": "你能帮帮我解决数学题吗?"
+        "content": "开始写作业了啊，我不想要这个。"
     },
     {
-        "speaker": "Speaker 2",
+        "speaker": "Speaker 2", 
         "start_time": "00:00:26.150000",
         "end_time": "00:00:35.940000",
-        "content": "好，什么数学题?"
+        "content": "快点，你就开机时，我没计时啊，你刚才说一杯开始。"
     },
     {
         "speaker": "Speaker 1",
-        "start_time": "00:00:37.520000",
+        "start_time": "00:00:37.520000", 
         "end_time": "00:00:48.970000",
-        "content": "这个数学题是关于除法算式，我被难住了"
+        "content": "我招你啥啦，这是什么啊，别玩别的啦。"
     }
 ]
-</Input>
+</输入>
 
-<Output>
+<输出>
 {
-    "Speaker 1": "parent",
-    "Speaker 2": "child"
+    "Speaker 1": "child",
+    "Speaker 2": "parent"
 }
+</输出>
+
+请仔细分析对话内容中的语气、用词、表达方式和互动模式来准确识别角色。
 """
 
     # 初始化 OpenAI API 客户端
@@ -432,30 +506,45 @@ def num_tokens_from_string(string: str, encoding_name: str) -> int:
     num_tokens = len(encoding.encode(string))
     return num_tokens
 
-def transcribe_audio(file_path: str, api_details: dict, api_key: str) -> str:
+def transcribe_audio(file_path: str) -> dict:
     """
     完整的转写和角色分配流程。
     返回最终的JSON结果。
     """
     logging.info(f"开始转写音频文件: {file_path}")
+    
     # 转写文件
-    transcription_result = transcribe_file(file_path, api_details)
+    transcription_result = transcribe_file(file_path)
     if not transcription_result:
-        logging.warning("转写失败，返回空JSON")
-        return json.dumps({}, ensure_ascii=False, indent=4)
+        logging.warning("转写失败，返回空结果")
+        return {}
 
-    # 处理转写结果
-    processed_data = process_json(json.loads(transcription_result['content']['orderResult']))
+    # 处理转写结果 - 适配vivo API格式
+    try:
+        order_result = transcription_result['content']['orderResult']
+        if isinstance(order_result, str):
+            processed_data = process_vivo_result(json.loads(order_result))
+        else:
+            processed_data = process_vivo_result(order_result)
+    except Exception as e:
+        logging.warning(f"处理vivo结果失败，尝试旧格式: {e}")
+        processed_data = process_json(json.loads(transcription_result['content']['orderResult']))
+    
+    # 如果没有处理出数据，返回空结果
+    if not processed_data:
+        logging.warning("没有处理出有效的转写数据")
+        return {}
+    
     df = pd.DataFrame(processed_data, columns=['speaker', 'start_time', 'end_time', 'content'])
     combined_df = combine_rows(df)
     combined_df['start_time'] = pd.to_datetime(combined_df['start_time'], format="%H:%M:%S,%f").dt.strftime('%H:%M:%S.%f')
     combined_df['end_time'] = pd.to_datetime(combined_df['end_time'], format="%H:%M:%S,%f").dt.strftime('%H:%M:%S.%f')
     
-
     # 转换为JSON
     data_json = json.dumps(combined_df.to_dict(orient='records'), ensure_ascii=False)
     
     # 分配角色
+    api_key = os.environ.get('OPENAI_API_KEY')
     final_json = assign_roles(data_json, api_key)
     logging.info("转写和角色分配完成")
     return final_json
@@ -466,25 +555,19 @@ def process_audio(audio_file_path: str) -> dict:
 
     参数:
     audio_file_path (str): 音频文件的路径
-    api_details (dict): 包含API详细信息的字典
 
     返回:
-    str: 包含转写和角色分配结果的JSON字符串
+    dict: 包含转写和角色分配结果的JSON结果
     """
-    api_details = {
-        'appid': "7492a3df",
-        'secret_key': "730875415ad62b813b0799bd1ae73c14",
-        'api_key': os.environ.get('OPENAI_API_KEY'),
-    }
     logging.info(f"开始处理音频文件: {audio_file_path}")
     
     try:
-        final_json = transcribe_audio(audio_file_path, api_details, api_details['api_key'])
+        final_json = transcribe_audio(audio_file_path)
         logging.info("音频处理完成")
         return final_json
     except Exception as e:
         logging.error(f"处理音频文件时发生错误: {e}")
-        return json.dumps({"error": str(e)}, ensure_ascii=False, indent=4)
+        return {"error": str(e)}
 
 async def process_audio_async(audio_file_path: str) -> dict:
     """
@@ -496,24 +579,29 @@ async def process_audio_async(audio_file_path: str) -> dict:
     返回:
     dict: 包含转写和角色分配结果的JSON字典
     """
-    api_details = {
-        'appid': "7492a3df",
-        'secret_key': "730875415ad62b813b0799bd1ae73c14" ,
-        'api_key': os.environ.get('OPENAI_API_KEY'),
-    }
     logging.info(f"开始异步处理音频文件: {audio_file_path}")
 
     try:
         # 异步转写文件
         transcription_result = await asyncio.get_event_loop().run_in_executor(
-            None, transcribe_file, audio_file_path, api_details
+            None, transcribe_file, audio_file_path
         )
         if not transcription_result:
             logging.warning("转写失败，返回空JSON")
             return {}
 
-        # 处理转写结果
-        processed_data = process_json(json.loads(transcription_result['content']['orderResult']))
+        # 处理转写结果 - 注意vivo API返回的格式可能不同
+        try:
+            # 尝试解析vivo API的结果
+            order_result = transcription_result['content']['orderResult']
+            if isinstance(order_result, str):
+                processed_data = process_vivo_result(json.loads(order_result))
+            else:
+                processed_data = process_vivo_result(order_result)
+        except Exception as e:
+            logging.warning(f"处理vivo结果失败，尝试旧格式: {e}")
+            processed_data = process_json(json.loads(transcription_result['content']['orderResult']))
+        
         df = pd.DataFrame(processed_data, columns=['speaker', 'start_time', 'end_time', 'content'])
         combined_df = combine_rows(df)
         combined_df['start_time'] = pd.to_datetime(combined_df['start_time'], format="%H:%M:%S,%f").dt.strftime('%H:%M:%S.%f')
@@ -523,8 +611,9 @@ async def process_audio_async(audio_file_path: str) -> dict:
         data_json = json.dumps(combined_df.to_dict(orient='records'), ensure_ascii=False)
 
         # 分配角色
+        api_key = os.environ.get('OPENAI_API_KEY')
         final_json = await asyncio.get_event_loop().run_in_executor(
-            None, assign_roles, data_json, api_details['api_key']
+            None, assign_roles, data_json, api_key
         )
         logging.info("异步转写和角色分配完成")
         return final_json

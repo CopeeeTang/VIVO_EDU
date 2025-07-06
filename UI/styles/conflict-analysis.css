@@ -1,0 +1,1045 @@
+/* 冲突场景剖析页面样式 */
+
+/* 页面基础样式 */
+body {
+    background-color: #F6F6F6;
+    min-height: 100vh;
+    font-family: 'PingFang SC', 'Alibaba PuHuiTi 2.0', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* 状态栏样式 */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 20px;
+    font-size: 17px;
+    font-weight: 590;
+    color: var(--primary-color);
+    background: transparent;
+    z-index: 10;
+}
+
+.status-left .time {
+    color: var(--primary-color);
+    font-family: 'SF Pro', sans-serif;
+    font-weight: 590;
+    font-size: 17px;
+    line-height: 1.29;
+    text-align: center;
+}
+
+.status-right .signal-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-right .cellular,
+.status-right .wifi {
+    width: 20px;
+    height: 12px;
+    color: var(--primary-color);
+}
+
+.status-right .battery {
+    position: relative;
+    width: 27px;
+    height: 13px;
+}
+
+.battery-body {
+    width: 25px;
+    height: 13px;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    opacity: 0.35;
+}
+
+.battery-tip {
+    position: absolute;
+    right: -2px;
+    top: 4px;
+    width: 1.33px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 0 1px 1px 0;
+    opacity: 0.4;
+}
+
+.battery-level {
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 21px;
+    height: 9px;
+    background: var(--primary-color);
+    border-radius: 2.5px;
+}
+
+/* 页面头部 */
+.header {
+    display: flex;
+    align-items: center;
+    padding: 12px 38px;
+    gap: 85px;
+    background: transparent;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.back-button:hover {
+    opacity: 0.7;
+}
+
+.back-button svg {
+    width: 10px;
+    height: 20px;
+    stroke-width: 4;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    text-align: left;
+    line-height: 1.05;
+    flex: 1;
+}
+
+/* 主内容区域 */
+.main-content {
+    padding: 0 0 300px 0;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* 事件标题 */
+.event-title {
+    display: flex;
+    align-items: center;
+    padding: 8px 26px;
+    gap: 11px;
+    background: transparent;
+    margin-bottom: 0;
+}
+
+.event-indicator {
+    width: 10px;
+    height: 28px;
+    background: var(--primary-color);
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.event-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--black);
+    margin: 0;
+    line-height: 1.24;
+    flex: 1;
+}
+
+/* 冲突选择器 */
+.conflict-selector {
+    padding: 0 70px;
+    margin: 30px 0;
+}
+
+.conflict-track {
+    position: relative;
+    background: #D9D9D9;
+    border-radius: 30px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.25);
+    height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.conflict-active-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 94px;
+    height: 52px;
+    background: var(--white);
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.conflict-tabs {
+    display: flex;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.conflict-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 14px 0;
+    transition: color 0.3s ease;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 1.28;
+    font-family: 'PingFang SC', sans-serif;
+}
+
+.conflict-tab.active {
+    color: var(--secondary-color);
+}
+
+.conflict-tab:hover {
+    opacity: 0.8;
+}
+
+/* 分析卡片区域 */
+.analysis-cards {
+    padding: 0 29px;
+    margin: 30px 0;
+}
+
+.analysis-card {
+    background: var(--white);
+    border-radius: 15px;
+    padding: 13px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    min-height: 157px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.analysis-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    font-family: 'PingFang SC', sans-serif;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-description {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.4;
+    text-align: justify;
+    margin: 0;
+    font-family: 'Alibaba PuHuiTi 2.0', sans-serif;
+}
+
+/* 对话详情区域 */
+.dialogue-section {
+    padding: 0 29px;
+    margin: 30px 0;
+}
+
+.dialogue-container {
+    background: var(--white);
+    border: 1px solid #DDEBDB;
+    border-radius: 16px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.dialogue-header {
+    display: flex;
+    align-items: center;
+    padding: 13px 16px;
+    border-bottom: 1px solid #DDEBDB;
+    gap: 12px;
+}
+
+.dialogue-icon {
+    width: 54px;
+    height: 37px;
+    background: #DDEBDB;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dialogue-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+}
+
+.dialogue-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+    flex: 1;
+    line-height: 1.77;
+}
+
+.dialogue-expand {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.dialogue-expand:hover {
+    transform: translateY(2px);
+}
+
+.dialogue-expand svg {
+    width: 12px;
+    height: 6px;
+    stroke-width: 3;
+}
+
+.dialogue-content {
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dialogue-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.dialogue-message.parent {
+    justify-content: flex-end;
+}
+
+.dialogue-message.child {
+    justify-content: flex-start;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 6px 8px;
+    border-radius: 20px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.message-bubble.parent {
+    background: var(--secondary-color);
+    border-bottom-right-radius: 1px;
+}
+
+.message-bubble.child {
+    background: #F4F4F4;
+    border-bottom-left-radius: 1px;
+}
+
+.message-header {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.message-role {
+    font-size: 10px;
+    font-weight: 500;
+    color: #627967;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.message-content {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--primary-color);
+    line-height: 1.33;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.message-bubble.parent .message-content {
+    color: var(--primary-color);
+}
+
+.message-bubble.child .message-content {
+    color: var(--primary-color);
+}
+
+/* 情绪评估仪表盘 */
+.emotion-gauge {
+    padding: 20px;
+    background: #DDEBDB;
+    border-top: 1px solid #DDEBDB;
+    border-radius: 0 0 16px 16px;
+}
+
+.gauge-track {
+    position: relative;
+    height: 41px;
+    display: flex;
+    align-items: center;
+}
+
+.gauge-line {
+    position: absolute;
+    left: 44px;
+    right: 44px;
+    height: 1px;
+    background: var(--white);
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gauge-handle {
+    position: absolute;
+    left: 7px;
+    top: 7px;
+    width: 28px;
+    height: 28px;
+    background: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gauge-handle:hover {
+    transform: scale(1.1);
+}
+
+.gauge-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--primary-color);
+}
+
+.gauge-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.gauge-dot {
+    position: absolute;
+    right: 43px;
+    top: 14px;
+    width: 13px;
+    height: 13px;
+    background: var(--primary-color);
+    border-radius: 50%;
+}
+
+.gauge-value {
+    position: absolute;
+    right: 0;
+    top: 9px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.92;
+    font-family: 'Poppins', sans-serif;
+    background: var(--primary-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* 操作提示 */
+.action-tips {
+    padding: 0 29px;
+    margin: 30px 0;
+    border: 1px solid #ddd;
+    box-shadow: none;
+}
+
+.tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    background: var(--white);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tip-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tip-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(157, 188, 152, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tip-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary-color);
+    stroke-width: 2;
+}
+
+.tip-content {
+    flex: 1;
+}
+
+.tip-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.tip-text {
+    font-size: 13px;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 底部操作按钮 */
+.bottom-actions {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    padding: 20px;
+    border-top: 1px solid #E5E5E5;
+    display: flex;
+    gap: 15px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.action-button {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    outline: none;
+}
+
+.action-button svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+.action-button.primary {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.action-button.primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(55, 76, 60, 0.3);
+}
+
+.action-button.secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.action-button.secondary:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(55, 76, 60, 0.2);
+}
+
+/* 动画效果 */
+.dialogue-content.expanded {
+    max-height: 600px;
+    transition: max-height 0.5s ease;
+}
+
+.dialogue-content.collapsed {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.analysis-card.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.analysis-card.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* 冲突标签切换动画 */
+.conflict-active-bg.tab-1 {
+    transform: translateX(0);
+}
+
+.conflict-active-bg.tab-2 {
+    transform: translateX(100%);
+}
+
+.conflict-active-bg.tab-3 {
+    transform: translateX(200%);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header {
+        padding: 12px 20px;
+        gap: 60px;
+    }
+    
+    .conflict-selector {
+        padding: 0 50px;
+    }
+    
+    .analysis-cards,
+    .dialogue-section,
+    .action-tips {
+        padding: 0 20px;
+    }
+    
+    .bottom-actions {
+        padding: 15px;
+    }
+    
+    .action-button {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .main-content {
+        padding: 0 0 320px 0;
+    }
+    
+    .audio-player-container {
+        bottom: 80px;
+        padding: 15px;
+    }
+    
+    .audio-controls {
+        gap: 12px;
+    }
+    
+    .play-button {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .audio-actions {
+        gap: 12px;
+    }
+    
+    .speed-button,
+    .volume-button {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        gap: 40px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+    }
+    
+    .conflict-selector {
+        padding: 0 30px;
+    }
+    
+    .analysis-cards,
+    .dialogue-section,
+    .action-tips {
+        padding: 0 15px;
+    }
+    
+    .analysis-card {
+        padding: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .card-title {
+        font-size: 14px;
+    }
+    
+    .card-description {
+        font-size: 14px;
+    }
+    
+    .dialogue-content {
+        padding: 15px;
+    }
+    
+    .message-bubble {
+        padding: 8px 12px;
+    }
+    
+    .tip-item {
+        padding: 12px;
+    }
+    
+    .bottom-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .action-button {
+        padding: 12px;
+        font-size: 14px;
+    }
+    
+    .main-content {
+        padding: 0 0 330px 0;
+    }
+    
+    .audio-player-container {
+        bottom: 120px;
+        padding: 12px;
+    }
+    
+    .audio-player {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .audio-title {
+        font-size: 14px;
+    }
+    
+    .audio-duration {
+        font-size: 12px;
+    }
+}
+
+/* 无障碍支持 */
+.conflict-tab:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.dialogue-expand:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.action-button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* 打印样式 */
+@media print {
+    .status-bar,
+    .header,
+    .bottom-actions {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 0;
+    }
+    
+    .analysis-card,
+    .dialogue-container {
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+    
+    .action-tips {
+        page-break-inside: avoid;
+    }
+}
+
+/* 音频播放器样式 */
+.audio-player-container {
+    position: fixed;
+    bottom: 90px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 1);
+    border-top: 2px solid #E5E5E5;
+    padding: 20px;
+    margin: 0;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    opacity: 1;
+    backdrop-filter: blur(10px);
+}
+
+.audio-player {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.audio-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.play-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(55, 76, 60, 0.3);
+}
+
+.play-button:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+.play-button svg {
+    width: 20px;
+    height: 20px;
+    color: var(--white);
+}
+
+.audio-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.audio-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--black);
+    margin: 0;
+}
+
+.audio-duration {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.audio-progress {
+    width: 100%;
+    height: 4px;
+    background: #E5E5E5;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+.progress-handle {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.audio-progress:hover .progress-handle {
+    opacity: 1;
+}
+
+.audio-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.speed-button,
+.volume-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.speed-button:hover,
+.volume-button:hover {
+    background: var(--light-background);
+    border-color: var(--primary-color);
+}
+
+.speed-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.volume-button svg {
+    width: 18px;
+    height: 18px;
+    color: var(--black);
+}
+
+/* 音频播放器响应式设计 */
+@media (max-width: 768px) {
+    .audio-player-container {
+        padding: 15px;
+    }
+    
+    .audio-controls {
+        gap: 12px;
+    }
+    
+    .play-button {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .audio-actions {
+        gap: 12px;
+    }
+    
+    .speed-button,
+    .volume-button {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .audio-player-container {
+        padding: 12px;
+    }
+    
+    .audio-player {
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .audio-title {
+        font-size: 14px;
+    }
+    
+    .audio-duration {
+        font-size: 12px;
+    }
+} 

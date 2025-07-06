@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册 - 家庭教育助手</title>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/auth.css">
+</head>
+<body>
+    <!-- 注册页面容器 -->
+    <div class="page auth-page">
+        <!-- 页面头部 -->
+        <header class="auth-header">
+            <div class="container">
+                <h1 class="auth-title">家庭教育助手</h1>
+                <p class="auth-subtitle">创建您的账户，开始教育分析之旅</p>
+            </div>
+        </header>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <div class="container">
+                <!-- 注册表单卡片 -->
+                <div class="auth-card card-large">
+                    <div class="auth-card-header">
+                        <h2 class="auth-card-title">用户注册</h2>
+                        <p class="auth-card-subtitle">请填写以下信息完成注册</p>
+                    </div>
+
+                    <!-- 注册表单 -->
+                    <form class="auth-form" data-type="register" id="registerForm">
+                        <!-- 用户名输入 -->
+                        <div class="input-group">
+                            <label for="username" class="input-label">
+                                <span class="label-text">用户名</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                class="input-field" 
+                                placeholder="请输入用户名"
+                                required
+                                minlength="3"
+                                maxlength="20"
+                                autocomplete="username"
+                            >
+                            <div class="input-hint">用户名长度为3-20个字符</div>
+                        </div>
+
+                        <!-- 密码输入 -->
+                        <div class="input-group">
+                            <label for="password" class="input-label">
+                                <span class="label-text">密码</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="password-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    class="input-field" 
+                                    placeholder="请输入密码"
+                                    required
+                                    minlength="6"
+                                    autocomplete="new-password"
+                                >
+                                <button type="button" class="password-toggle" id="togglePassword">
+                                    <span class="password-toggle-text">显示</span>
+                                </button>
+                            </div>
+                            <div class="input-hint">密码长度不少于6个字符</div>
+                        </div>
+
+                        <!-- 确认密码输入 -->
+                        <div class="input-group">
+                            <label for="confirmPassword" class="input-label">
+                                <span class="label-text">确认密码</span>
+                                <span class="label-required">*</span>
+                            </label>
+                            <div class="password-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="confirmPassword" 
+                                    name="confirmPassword" 
+                                    class="input-field" 
+                                    placeholder="请再次输入密码"
+                                    required
+                                    minlength="6"
+                                    autocomplete="new-password"
+                                >
+                                <button type="button" class="password-toggle" id="toggleConfirmPassword">
+                                    <span class="password-toggle-text">显示</span>
+                                </button>
+                            </div>
+                            <div class="input-hint">请再次输入相同的密码</div>
+                        </div>
+
+                        <!-- 邮箱输入（可选） -->
+                        <div class="input-group">
+                            <label for="email" class="input-label">
+                                <span class="label-text">邮箱</span>
+                                <span class="label-optional">（可选）</span>
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="input-field" 
+                                placeholder="请输入邮箱地址"
+                                autocomplete="email"
+                            >
+                            <div class="input-hint">用于接收重要通知和找回密码</div>
+                        </div>
+
+                        <!-- 手机号输入（可选） -->
+                        <div class="input-group">
+                            <label for="phone" class="input-label">
+                                <span class="label-text">手机号</span>
+                                <span class="label-optional">（可选）</span>
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="input-field" 
+                                placeholder="请输入手机号"
+                                autocomplete="tel"
+                            >
+                            <div class="input-hint">用于接收重要通知</div>
+                        </div>
+
+                        <!-- 协议同意 -->
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="checkbox-input" required>
+                                <span class="checkbox-mark"></span>
+                                <span class="checkbox-text">
+                                    我已阅读并同意 
+                                    <a href="#" class="link-primary">《用户协议》</a> 
+                                    和 
+                                    <a href="#" class="link-primary">《隐私政策》</a>
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- 提交按钮 -->
+                        <button type="submit" class="btn btn-primary btn-large btn-full">
+                            <span class="btn-text">注册账户</span>
+                        </button>
+                    </form>
+
+                    <!-- 社交登录选项 -->
+                    <div class="social-login">
+                        <div class="social-divider">
+                            <span class="social-divider-text">或使用以下方式注册</span>
+                        </div>
+                        <div class="social-buttons">
+                            <button class="btn btn-outline social-btn" type="button">
+                                <span class="social-icon">📧</span>
+                                <span class="btn-text">Google</span>
+                            </button>
+                            <button class="btn btn-outline social-btn" type="button">
+                                <span class="social-icon">🍎</span>
+                                <span class="btn-text">Apple</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 登录链接 -->
+                    <div class="auth-footer">
+                        <p class="auth-footer-text">
+                            已有账户？
+                            <a href="#" class="link-primary" data-navigate="login">立即登录</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 页面底部 -->
+        <footer class="auth-footer-section">
+            <div class="container">
+                <p class="footer-text">© 2024 家庭教育助手. 保留所有权利.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- 加载JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html> 

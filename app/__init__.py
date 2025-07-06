@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, request, send_from_directory, redirect, url_for, flash
 from .extensions import db, migrate, jwt, cors
 from .routes.auth_routes import auth_bp

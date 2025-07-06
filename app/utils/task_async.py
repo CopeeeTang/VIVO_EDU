@@ -12,7 +12,8 @@ from ..models import (
     ConflictSeverityEnum, BehaviorTypeEnum, BehaviorSeverityEnum
 )
 from .storage import download_from_storage_async, load_documents_from_storage_async
-from .script_analysis import ConflictAnalysis, BehaviorAnalysis, BehaviorAnalysisOutput, ConflictAnalysisOutput,transcribe_audio_async, analyze_audio_async, generate_intervention_strategy_async
+from .conflict_behavior_analysis import ConflictAnalysis, BehaviorAnalysis, BehaviorAnalysisOutput, ConflictAnalysisOutput
+from .script_analysis import transcribe_audio_async, analyze_audio_async, generate_intervention_strategy_async
 from .request_api import process_audio_async
 from sqlalchemy import text
 from typing import List, Tuple
@@ -141,7 +142,7 @@ async def process_audio_task(app, file_id):
                 # 同时执行步骤 4、5、6 和 步骤 7，使用规范化后的转写结果
                 # 为每个任务添加重试机制
                 tasks = [
-                    asyncio.create_task(retry_async(save_transcript_json, app, file_id, dt, normalized_transcript)),
+                    asyncio.create_task(retry_async(save_transcript_json, app, user_id, dt, normalized_transcript)),
                     asyncio.create_task(retry_async(save_transcription_to_db, db, file_id, normalized_transcript)),
                     asyncio.create_task(retry_async(generate_intervention_strategy_async, normalized_transcript)),
                     asyncio.create_task(retry_async(analyze_transcripts, normalized_transcript, dt, file_id, analysis_id))

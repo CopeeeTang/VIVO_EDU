@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 家庭教育助手</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="status-bar">
+        <div class="time-container">
+            <span class="time">9:41</span>
+        </div>
+        <div class="levels">
+            <div class="cellular-connection"></div>
+            <div class="wifi"></div>
+            <div class="battery">
+                <div class="battery-border"></div>
+                <div class="battery-capacity"></div>
+                <div class="battery-cap"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 背景装饰 -->
+    <div class="background-decoration">
+        <div class="circle-decoration"></div>
+        <div class="overlay"></div>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="main-content">
+        <!-- 登录表单容器 -->
+        <div class="login-container">
+            <!-- 标题 -->
+            <div class="title-section">
+                <h1 class="login-title">登录</h1>
+            </div>
+
+            <!-- 表单 -->
+            <div class="form-container">
+                <div class="form-wrapper">
+                    <!-- 账号输入 -->
+                    <div class="input-field">
+                        <div class="field-label">
+                            <span class="label-text">账号</span>
+                            <span class="required-star">*</span>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="username" placeholder="请输入您的账号" required>
+                        </div>
+                    </div>
+
+                    <!-- 密码输入 -->
+                    <div class="input-field">
+                        <div class="field-label">
+                            <span class="label-text">密码</span>
+                            <span class="required-star">*</span>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder="请输入您的密码" required>
+                            <div class="password-toggle" id="passwordToggle">
+                                <div class="eye-icon"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 登录按钮 -->
+                    <div class="button-section">
+                        <button type="submit" class="login-button" id="loginButton">登录</button>
+                    </div>
+
+                    <!-- 或者分割线 -->
+                    <div class="divider-section">
+                        <div class="divider-line"></div>
+                        <span class="divider-text">Or</span>
+                        <div class="divider-line"></div>
+                    </div>
+
+                    <!-- 社交登录按钮 -->
+                    <div class="social-login-section">
+                        <button type="button" class="social-login-button google-login">
+                            <div class="google-icon">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="#4285F4" d="M17.43 9.5c0-.67-.06-1.33-.15-1.95H9.27v3.7h4.54c-.19 1.07-.77 2.07-1.64 2.79v2.29h2.67c1.56-1.44 2.46-3.56 2.46-6.06z"/>
+                                    <path fill="#34A853" d="M9.27 17.73c2.22 0 4.08-.73 5.44-1.98l-2.67-2.29c-.74.5-1.69.79-2.77.79-2.13 0-3.93-1.44-4.57-3.37H1.98v2.36c1.35 2.69 4.13 4.49 7.29 4.49z"/>
+                                    <path fill="#FBBC05" d="M4.7 10.88c-.16-.5-.25-1.03-.25-1.57s.09-1.07.25-1.57V5.38H1.98A8.95 8.95 0 0 0 .81 9.31c0 1.44.37 2.8 1.02 3.97l2.87-2.4z"/>
+                                    <path fill="#EA4335" d="M9.27 3.58c1.2 0 2.28.41 3.13 1.22l2.35-2.35C13.34.94 11.48.27 9.27.27 6.11.27 3.33 2.07 1.98 4.76l2.72 2.36c.64-1.93 2.44-3.37 4.57-3.37z"/>
+                                </svg>
+                            </div>
+                        </button>
+                        <button type="button" class="social-login-button apple-login">
+                            <div class="apple-icon">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="#374C3C" d="M13.12 0c-.11 1.45-.56 2.72-1.38 3.82-.7.96-1.82 1.77-3.07 1.66-.13-1.39.46-2.72 1.26-3.66C10.68.97 11.87.19 13.12 0zM15.8 13.33c-.84 1.94-1.24 2.8-2.31 4.52-.95 1.52-2.29 3.42-3.95 3.44-1.47.02-1.83-.97-3.83-.96-2 .01-2.4 1-3.86.96-1.67-.03-2.87-1.65-3.82-3.17C-3.34 15.01-.75 9.58.91 7.28c1.14-1.58 2.96-2.5 4.66-2.5 1.74 0 2.83.98 4.27.98 1.38 0 2.22-.98 4.21-.98 1.5 0 2.96.72 4.05 1.97-3.55 1.95-2.97 7.05.7 8.58z"/>
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 注册链接 -->
+        <div class="register-section">
+            <a href="register.html" class="register-link">还未拥有账号？立即注册</a>
+        </div>
+    </div>
+
+    <!-- 登录成功弹窗 -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <div class="icon-circle">
+                    <div class="checkmark">
+                        <div class="checkmark-stem"></div>
+                        <div class="checkmark-kick"></div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="success-title">登录成功</h2>
+            <button class="close-button" id="closeModal">
+                <span class="close-icon">×</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html> 

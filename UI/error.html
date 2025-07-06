@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>错误提示 - 家庭教育助手</title>
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/error.css">
+</head>
+<body>
+    <!-- 错误页面容器 -->
+    <div class="page error-page">
+        <!-- 背景登录表单（被遮罩覆盖） -->
+        <div class="background-content">
+            <!-- 装饰性背景元素 -->
+            <div class="decoration-background">
+                <div class="decoration-circle"></div>
+            </div>
+
+            <!-- 状态栏 -->
+            <div class="status-bar">
+                <div class="status-time">
+                    <span class="time-text">9:41</span>
+                </div>
+                <div class="status-indicators">
+                    <div class="signal-icon"></div>
+                    <div class="wifi-icon"></div>
+                    <div class="battery-icon">
+                        <div class="battery-level"></div>
+                        <div class="battery-cap"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 背景登录表单 -->
+            <main class="background-form">
+                <div class="container">
+                    <div class="form-container">
+                        <div class="form-header">
+                            <h1 class="form-title">登录</h1>
+                        </div>
+                        
+                        <div class="form-card">
+                            <div class="form-fields">
+                                <div class="input-group">
+                                    <label class="input-label">
+                                        <span class="label-text">账号</span>
+                                        <span class="label-required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <input type="text" class="input-field" placeholder="请输入您的账号" disabled>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-group">
+                                    <label class="input-label">
+                                        <span class="label-text">密码</span>
+                                        <span class="label-required">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <input type="password" class="input-field" placeholder="请输入您的密码" disabled>
+                                        <button type="button" class="password-toggle" disabled>
+                                            <svg class="password-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M1.5 9C1.5 9 4.5 3 9 3C13.5 3 16.5 9 16.5 9C16.5 9 13.5 15 9 15C4.5 15 1.5 9 1.5 9Z" stroke="#738088" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <circle cx="9" cy="9" r="2.25" stroke="#738088" stroke-width="1.5"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary btn-large btn-full" disabled>
+                                    <span class="btn-text">登录</span>
+                                </button>
+                            </div>
+                            
+                            <div class="form-divider">
+                                <div class="divider-line"></div>
+                                <span class="divider-text">Or</span>
+                                <div class="divider-line"></div>
+                            </div>
+                            
+                            <div class="social-login">
+                                <div class="social-buttons">
+                                    <button class="btn btn-outline social-btn" disabled>
+                                        <div class="social-icon">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M17.43 9.18C17.43 8.55 17.37 7.95 17.27 7.36H9.18V10.72H13.77C13.59 11.64 13.05 12.42 12.23 12.93V15.07H14.92C16.5 13.63 17.43 11.58 17.43 9.18Z" fill="#4285F4"/>
+                                                <path d="M9.18 17.18C11.43 17.18 13.32 16.41 14.92 15.07L12.23 12.93C11.52 13.38 10.59 13.68 9.18 13.68C7.02 13.68 5.18 12.23 4.54 10.27H1.77V12.48C3.36 15.63 6.05 17.18 9.18 17.18Z" fill="#34A853"/>
+                                                <path d="M4.54 10.27C4.39 9.82 4.31 9.34 4.31 8.84C4.31 8.34 4.39 7.86 4.54 7.41V5.2H1.77C1.27 6.18 1 7.27 1 8.84C1 10.41 1.27 11.5 1.77 12.48L4.54 10.27Z" fill="#FBBC05"/>
+                                                <path d="M9.18 4C10.73 4 12.09 4.59 13.14 5.59L15.5 3.23C13.32 1.18 11.43 0.5 9.18 0.5C6.05 0.5 3.36 2.05 1.77 5.2L4.54 7.41C5.18 5.45 7.02 4 9.18 4Z" fill="#EA4335"/>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                    <button class="btn btn-outline social-btn" disabled>
+                                        <div class="social-icon">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M12.1875 0C12.1875 0 11.9063 2.1875 9.5625 2.1875C7.21875 2.1875 6.9375 0 6.9375 0C6.9375 0 4.59375 0.28125 4.59375 3.9375C4.59375 7.59375 8.25 18 9 18C9.75 18 13.4063 7.59375 13.4063 3.9375C13.4063 0.28125 12.1875 0 12.1875 0Z" fill="#374C3C"/>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- 注册链接 -->
+            <footer class="form-footer">
+                <div class="container">
+                    <p class="register-prompt">
+                        还未拥有账号？<a href="#" class="register-link">立即注册</a>
+                    </p>
+                </div>
+            </footer>
+        </div>
+
+        <!-- 错误遮罩层 -->
+        <div class="error-overlay">
+            <!-- 错误提示弹窗 -->
+            <div class="error-modal" id="errorModal">
+                <div class="error-content">
+                    <!-- 关闭按钮 -->
+                    <button class="error-close" id="errorClose" type="button">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                            <path d="M4.5 4.5L13.5 13.5" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13.5 4.5L4.5 13.5" stroke="#374C3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <!-- 错误图标 -->
+                    <div class="error-icon">
+                        <div class="error-circle">
+                            <div class="error-symbol">
+                                <svg width="94" height="94" viewBox="0 0 94 94" fill="none">
+                                    <path d="M0 47C0 21.04 21.04 0 47 0C72.96 0 94 21.04 94 47C94 72.96 72.96 94 47 94C21.04 94 0 72.96 0 47Z" fill="#E36960"/>
+                                    <path d="M38.46 34.59C38.46 34.59 47 26.59 47 26.59C47 26.59 55.54 34.59 55.54 34.59L60.96 40.01L49.04 51.93L60.96 63.85L55.54 69.27L47 60.73L38.46 69.27L33.04 63.85L44.96 51.93L33.04 40.01L38.46 34.59Z" fill="rgba(0, 0, 0, 0.15)"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 错误文本 -->
+                    <div class="error-text">
+                        <h2 class="error-title">暂不支持</h2>
+                        <p class="error-description">该功能暂时无法使用，请稍后再试或联系管理员</p>
+                    </div>
+
+                    <!-- 错误操作按钮 -->
+                    <div class="error-actions">
+                        <button class="btn btn-primary btn-large error-confirm" id="errorConfirm" type="button">
+                            <span class="btn-text">知道了</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/error.js"></script>
+</body>
+</html> 

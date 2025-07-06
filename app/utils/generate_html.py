@@ -12,7 +12,6 @@ from pydantic import BaseModel, ValidationError
 import openai
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from openai import OpenAI, AsyncOpenAI
-from .script_analysis import get_deepseek_response
 import os
 from functools import partial
 import re
