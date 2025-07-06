@@ -16,7 +16,27 @@
 
 v1.0 版本 （实际上线运行中）
 v2.0 版本（更新迭代了一版前端）
+family_education_ai/
+├── app/
+│   ├── __init__.py
+│   ├── models.py 数据库结构模块
+│   ├── utils/ 核心算法模块(包括vivo蓝心大模型算法)
+│   ├── routes/ 前后端路由模块
+│   │   ├── __init__.py
+│   │   ├── auth_routes.py
+│   │   ├── audio_routes.py 核心路由模块
+│   │   ├── analysis_routes.py
+│   │   └── main_routes.py
+├── checkpoints/ 知识库向量存储模块
+├── uploads/ 测试语音
+├── static/ 前端(1.0)
+├── templates/ 前端(1.0)
+├── config.py 路由配置
+├── UI 前端(2.0 更改同步中)
+├── requirements.txt
+└── run.py (启动模块)
 
+远程访问地址：http://8.149.247.39:5000/login 测试号账号：01 密码：01 可登录测试APP
 ## 🌟 项目概述
 
 VIVO_EDU是一个基于人工智能的家庭教育辅助系统，通过分析家庭对话录音，为家长提供专业的教育建议和亲子关系改进方案。系统集成了vivo蓝心大模型和语音转录技术，能够深度理解家庭教育场景，提供个性化的教育指导。
